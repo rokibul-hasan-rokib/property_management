@@ -27,7 +27,7 @@ class PropertyRequest extends FormRequest
             'rent'           => 'required|numeric|min:0|max:999999.99',
             'house_details'  => 'required|string|max:255',
             'bed'            => 'integer|min:0',
-            'bathroom'       => 'integer|min:0',
+            'washroom'       => 'integer|min:0',
             'belcony'        => 'integer|min:0',
             'kitchen'        => 'integer|min:1', // kitchen should be at least 1
         ];
@@ -43,7 +43,7 @@ class PropertyRequest extends FormRequest
             'rent.required'          => 'The rent field is required.',
             'house_details.required' => 'House details are required.',
             'bed.integer'            => 'The bed count must be an integer.',
-            'bathroom.integer'       => 'The bathroom count must be an integer.',
+            'washroom.integer'       => 'The washroom count must be an integer.',
             'kitchen.integer'        => 'The kitchen count must be an integer.',
         ];
     }

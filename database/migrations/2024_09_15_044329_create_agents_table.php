@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name'); // Name of the person
+            $table->string('image'); // Image file path
+            $table->string('designation'); // Designation/Title
+            $table->text('description'); // Description of the profile
+            $table->timestamps(); // Created at and Updated at timestamps
         });
     }
 

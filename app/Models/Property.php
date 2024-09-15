@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class Property extends Model
 {
@@ -15,8 +19,50 @@ class Property extends Model
         'rent',
         'house_details',
         'bed',
-        'bathroom',
+        'washroom',
         'belcony',
         'kitchen'
     ];
+
+    final public function prepare_data(Request $request){
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/images', $filename);
+            $imagePath = 'images/' . $filename;
+        }
+           return [
+                "place" => $request->input('place'),
+                "image" =>$imagePath,
+                "rent" => $request->input('rent'),
+                "house_details" => $request->input('house_details'),
+                "bed" => $request->input('bed'),
+                "washroom" => $request->input('washroom'),
+                "belcony" => $request->input("belcony"),
+                "kitchen" => $request->input("kitchen"),
+           ];
+    }
+
+    final public function storeProperty(Request $request): Builder|Model
+    {
+        return self::query()->create($this->prepare_data($request));
+
+    }
+
+    public function updateProperty(Request $request, Builder|Model $property)
+    {
+        return $property->update($this->prepare_data(($request)));
+    }
+
+    public function deleteProperty(Property $property)
+    {
+        return $property->forceDelete();
+    }
+
+
+
+
+
 }

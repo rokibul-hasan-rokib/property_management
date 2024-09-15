@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
+            $table->string('image'); // Image file path
+            $table->string('quality'); // Quality description or rating
+            $table->string('rate'); 
+            $table->string('security'); // Security description
             $table->timestamps();
         });
     }

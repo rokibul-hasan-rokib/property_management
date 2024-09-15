@@ -11,7 +11,7 @@ class ContactRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class ContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|min:10',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'subject.required' => 'The subject field is required.',
+            'message.required' => 'The message field is required.',
+            'message.min' => 'The message must be at least 10 characters long.',
+        ];
+    }
+
 }

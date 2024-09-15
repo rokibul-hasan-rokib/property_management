@@ -11,7 +11,7 @@ class AboutRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class AboutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+            'quality' => 'required|string|max:255', // Validate quality field
+            'rate' => 'required|string|max:255', // Validate rate field (can be numeric if needed)
+            'security' => 'required|string|max:255', // Validate security field
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image.required' => 'An image is required.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
+            'image.max' => 'The image may not be greater than 2MB.',
+            'quality.required' => 'The quality field is required.',
+            'rate.required' => 'The rate field is required.',
+            'security.required' => 'The security field is required.',
         ];
     }
 }

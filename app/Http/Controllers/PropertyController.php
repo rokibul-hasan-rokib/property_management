@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PropertyRequest;
+use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -26,9 +29,16 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PropertyRequest $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $property = (new Property())->storeProperty($request);
+            DB::commit();
+            return redirect()->back()->with("success","Property Addedd Successfully");
+         } catch (\Throwable $th) {
+          //throw $th;
+         }
     }
 
     /**
