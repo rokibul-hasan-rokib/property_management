@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap5" />
     <title>
-       $@yield('title')
+       @yield('title')
       </title>
       @include('frontend.layouts.css')
 </head>

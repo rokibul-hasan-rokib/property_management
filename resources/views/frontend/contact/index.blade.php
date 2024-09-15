@@ -36,6 +36,12 @@ style="background-image: url('images/hero_bg_1.jpg')"
 
 <div class="section">
 <div class="container">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+   @endif
+
   <div class="row">
     <div
       class="col-lg-4 mb-5 mb-lg-0"
@@ -75,49 +81,68 @@ style="background-image: url('images/hero_bg_1.jpg')"
       </div>
     </div>
     <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-      <form action="#">
-        <div class="row">
-          <div class="col-6 mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Your Name"
-            />
-          </div>
-          <div class="col-6 mb-3">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Your Email"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Subject"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="7"
-              class="form-control"
-              placeholder="Message"
-            ></textarea>
-          </div>
+        <form action="{{ route('contacts.store') }}" method="post">
+            @csrf
+            <div class="row">
+                <!-- Name Field -->
+                <div class="col-6 mb-3">
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="form-control"
+                        placeholder="Your Name"
+                        required
+                    />
+                </div>
 
-          <div class="col-12">
-            <input
-              type="submit"
-              value="Send Message"
-              class="btn btn-primary"
-            />
-          </div>
-        </div>
-      </form>
+                <!-- Email Field -->
+                <div class="col-6 mb-3">
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="Your Email"
+                        required
+                    />
+                </div>
+
+                <!-- Subject Field -->
+                <div class="col-12 mb-3">
+                    <input
+                        type="text"
+                        name="subject"
+                        id="subject"
+                        class="form-control"
+                        placeholder="Subject"
+                        required
+                    />
+                </div>
+
+                <!-- Message Field -->
+                <div class="col-12 mb-3">
+                    <textarea
+                        name="message"
+                        id="message"
+                        cols="30"
+                        rows="7"
+                        class="form-control"
+                        placeholder="Message"
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12">
+                    <input
+                        type="submit"
+                        value="Send Message"
+                        class="btn btn-primary"
+                    />
+                </div>
+            </div>
+        </form>
     </div>
   </div>
 </div>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Property;
+use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,15 +27,23 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-
+         try {
+            DB::beginTransaction();
+            $contact = (new Contact())->storeContact($request);
+            DB::commit();
+            return redirect()->route('contact.front')->with('success','Contact Information Send Successfully');
+         } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Failed to create product: ' . $th->getMessage());
+         }
     }
 
     /**
