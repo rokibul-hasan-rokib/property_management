@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('frontend.home.index');
 });
+Route::get('/dashboard', function () {
+    return view('backend.dashboard.dashboard');
+})->name('dashboard');
