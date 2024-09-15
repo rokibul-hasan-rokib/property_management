@@ -17,6 +17,10 @@ class PropertyController extends Controller
     {
         //
     }
+    public function index_front()
+    {
+        return view('frontend.property.index');
+    }
 
     /**
      * Show the form for creating a new resource.

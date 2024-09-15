@@ -16,10 +16,10 @@
           <ul
             class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
           >
-            <li class="active"><a href="index.html">Home</a></li>
-            <li class="has-children">
-              <a href="properties.html">Properties</a>
-              <ul class="dropdown">
+            <li class="active"><a href="{{route('home')}}">Home</a></li>
+            <li >
+              <a href="{{route('property.front')}}">Properties</a>
+              {{-- <ul class="dropdown">
                 <li><a href="#">Buy Property</a></li>
                 <li><a href="#">Sell Property</a></li>
                 <li class="has-children">
@@ -30,11 +30,11 @@
                     <li><a href="#">Sub Menu Three</a></li>
                   </ul>
                 </li>
-              </ul>
+              </ul> --}}
             </li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="{{route('service.front')}}">Services</a></li>
+            <li><a href="{{route('about.front')}}">About</a></li>
+            <li><a href="{{route('contact.front')}}">Contact Us</a></li>
           </ul>
 
           <a

@@ -14,7 +14,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+
+    }
+    public function index_front()
+    {
+        return view('frontend.contact.index');
     }
 
     /**

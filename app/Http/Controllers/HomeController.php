@@ -5,18 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
-    public function index_front()
-    {
-        return view('frontend.about.index');
+        return view('frontend.home.index');
     }
 
     /**
