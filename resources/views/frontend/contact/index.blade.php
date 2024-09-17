@@ -36,11 +36,8 @@ style="background-image: url('images/hero_bg_1.jpg')"
 
 <div class="section">
 <div class="container">
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-   @endif
+
+    <x-alert />
 
   <div class="row">
     <div

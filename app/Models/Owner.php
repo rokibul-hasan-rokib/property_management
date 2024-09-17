@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class Owner extends Model
 {
@@ -25,8 +27,9 @@ class Owner extends Model
         if($request->hasFile('image')){
              $file = $request->file('image');
              $filename = time() . '_' . $file->getClientOriginalName();
-             $file->storeAs('pulic/images',$filename);
-             $imagePath = 'images/' . $filename;
+             $destinationPath = public_path('images'); // Public directory 'public/images'
+             $file->move($destinationPath, $filename); // Move file to the desired location
+             $imagePath = 'images/' . $filename; // Relative path to store in DB
             }
         return [
               "name" => $request->input('name'),
@@ -48,6 +51,6 @@ class Owner extends Model
 
     public function deleteOwner(Owner $owner)
     {
-        return $owner->forceDelete();  
+        return $owner->forceDelete();
     }
 }

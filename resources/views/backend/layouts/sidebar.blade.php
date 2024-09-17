@@ -20,7 +20,7 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('contacts.index')}}">
           <i class="bi bi-question-circle"></i>
           <span>Contact</span>
         </a>
@@ -41,7 +41,7 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="{{route('agents.index')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Agent</span>
         </a>

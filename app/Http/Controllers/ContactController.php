@@ -15,7 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-
+        $contacts = Contact::all();
+        return view('backend.contact.index',compact('contacts'));
     }
     public function index_front()
     {
@@ -73,8 +74,16 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        //
+       try {
+        DB::beginTransaction();
+        (new Contact())->deleteContact($contact);
+        DB::commit();
+        return redirect()->route('contacts.index')->with('success','Deleted successfully');
+       } catch (\Throwable $th) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Failed to create product: ' . $th->getMessage());
+       }
     }
 }

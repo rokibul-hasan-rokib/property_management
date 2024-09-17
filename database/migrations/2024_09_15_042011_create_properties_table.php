@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('image');
             $table->decimal('rent', 8,2);
             $table->string('house_details');
+            $table->integer('floor');
+            $table->string('apartment');
             $table->integer('bed')->default(0);
             $table->integer('washroom')->default(0);
             $table->integer('belcony')->default(0);

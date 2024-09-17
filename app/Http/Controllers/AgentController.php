@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AgentRequest;
+use App\Models\Agent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
@@ -12,7 +15,8 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        $agents = Agent::all();
+        return view('backend.agent.index', compact('agents'));
     }
 
     /**
@@ -20,15 +24,23 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.agent.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AgentRequest $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $agent = (new Agent())->storeAgent($request);
+            DB::commit();
+            return redirect()->route('agents.index')->with('success','Agent Created Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -36,7 +48,7 @@ class AgentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

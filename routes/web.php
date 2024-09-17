@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
@@ -26,3 +27,6 @@ Route::get('contact', [ContactController::class, 'index_front'])->name('contact.
 Route::get('service', [ServiceController::class, 'index_front'])->name('service.front');
 Route::get('about', [AboutController::class, 'index_front'])->name('about.front');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+Route::resource('agents', AgentController::class);
