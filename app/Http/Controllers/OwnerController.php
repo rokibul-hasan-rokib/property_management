@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OwnerController extends Controller
 {
@@ -12,7 +14,8 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        //
+        $owners = Owner::all();
+        return view('backend.owner.index',compact('owners'));
     }
 
     /**
@@ -20,7 +23,7 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.owner.create');
     }
 
     /**
@@ -28,7 +31,15 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $owner = (new Owner())->storeOwner($request);
+            DB::commit();
+            return redirect()->route('owners.index')->with('success', "Owner Created Successfully");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -58,8 +69,16 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Owner $owner)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Owner())->deleteOwner($owner);
+            DB::commit();
+            return redirect()->route('owners.index')->with('success', "Owner Created Successfully");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 }

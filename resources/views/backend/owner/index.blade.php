@@ -26,7 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Owner</h5>
                             <div class="d-flex justify-content-between mb-4">
-                                <a href="{{route()}}" class="btn btn-primary">OwnerAdd</a>
+                                <a href="{{route('owners.create')}}" class="btn btn-primary">OwnerAdd</a>
                             </div>
 
 
@@ -37,16 +37,22 @@
                                         <th>Name</th>
                                         <th>Designation</th>
                                         <th>Description</th>
+                                        <th>Image</th>
                                         <th>Actions</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($owners as $owner)
                                     <tr>
                                         <td>{{ $owner->name }}</td>
-                                        <td>{{ $owner->email }}</td>
-                                        <td>{{ $owner->subject }}</td>
-                                        <td>{{ $owner->message }}</td>
+                                        <td>{{ $owner->designation }}</td>
+                                        <td>{{ $owner->description }}</td>
+                                        <td>
+                                            @if ($owner->image)
+                                            <img src="{{ asset($owner->image) }}" width="50" height="50" alt="owner Image">
+                                            @endif
+                                        </td>
                                         <td>
                                             <form action="{{ route('owners.destroy', $owner->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf

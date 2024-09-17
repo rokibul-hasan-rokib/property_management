@@ -24,9 +24,9 @@ class Agent extends Model
         if($request->hasFile('image')){
             $file = $request->file('image');
             $filename = time(). '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('images'); // Public directory 'public/images'
+            $destinationPath = public_path('photos'); // Public directory 'public/images'
             $file->move($destinationPath, $filename); // Move file to the desired location
-            $imagePath = 'images/' . $filename; // Relative path to store in DB
+            $imagePath = 'photos/' . $filename; // Relative path to store in DB
         }
         return [
               "name" => $request->input('name'),
