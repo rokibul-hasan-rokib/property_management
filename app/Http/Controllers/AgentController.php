@@ -62,7 +62,7 @@ class AgentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agent $agent)
+    public function update(AgentRequest $request, Agent $agent)
     {
         try {
             DB::beginTransaction();
