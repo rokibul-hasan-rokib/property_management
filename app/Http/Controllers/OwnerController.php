@@ -56,7 +56,7 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner)
     {
-        return view('backend.owner.edit');
+        return view('backend.owner.edit',compact('owner'));
     }
 
     /**

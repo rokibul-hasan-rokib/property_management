@@ -56,7 +56,7 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        return view('backend.agent.edit');
+        return view('backend.agent.edit', compact('agent'));
     }
 
     /**
