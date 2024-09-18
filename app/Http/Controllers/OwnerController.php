@@ -53,17 +53,25 @@ class OwnerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Owner $owner)
     {
-        //
+        return view('backend.owner.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Owner $owner)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Owner())->updateOwner($request, $owner);
+            DB::commit();
+            return redirect()->route('owners.index')->with('Success',"Owner created Successfully0");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 
     /**
