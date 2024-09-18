@@ -64,14 +64,30 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
-        
+        try {
+            DB::beginTransaction();
+            (new Agent())->updateAgent($request, $agent);
+            DB::commit();
+            return redirect()->route('agents.index')->with('success',"Agent Updated Successfully");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Agent $agent)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Agent())->deleteAgent($agent);
+            DB::commit();
+            return redirect()->route('agents.index')->with('successs','Agent deleted successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 }
