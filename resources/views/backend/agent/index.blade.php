@@ -53,10 +53,12 @@
 
                                         </td>
                                         <td>
+                                            <a href="{{ route('agents.edit', $agent->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
                                             <form action="{{ route('agents.destroy', $agent->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

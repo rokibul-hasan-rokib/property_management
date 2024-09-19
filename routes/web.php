@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PropertyController;
@@ -32,4 +33,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('agents', AgentController::class);
 Route::resource('owners', OwnerController::class);
-Route::resource('customers', OwnerController::class);
+Route::resource('customers', CustomerController::class);
