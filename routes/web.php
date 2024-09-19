@@ -32,3 +32,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('agents', AgentController::class);
 Route::resource('owners', OwnerController::class);
+Route::resource('customers', OwnerController::class);
