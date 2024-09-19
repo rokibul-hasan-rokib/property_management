@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class Service extends Model
+class Customer extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'image',
+        'designation',
         'description',
     ];
 
@@ -29,22 +31,25 @@ class Service extends Model
         return [
               "name" => $request->input('name'),
               "image" => $imagePath,
+              "designation" => $request->input("designation"),
               "description" => $request->input('description'),
         ];
     }
 
-    final public function storeService(Request $request): Builder|Model
+
+    final public function storeCustomer(Request $request): Builder|Model
     {
         return self::query()->create($this->prepare_data($request));
     }
 
-    final public function updateService(Request $request, Builder|Model $service)
+    final public function updateCustomer(Request $request, Builder|Model $service)
     {
         return $service->update($this->prepare_data($request));
     }
 
-    public function deleteService(Service $service)
+    public function deleteCustomer(Customer $customer)
     {
-        return $service->forceDelete();
+        return $customer->forceDelete();
     }
+
 }

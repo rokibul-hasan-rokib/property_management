@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class CustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class ServiceRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validates image upload
+            'designation' => 'required|string|max:255',
             'description' => 'required|string',
         ];
     }
@@ -33,6 +34,7 @@ class ServiceRequest extends FormRequest
             'name.required' => 'The name field is required.',
             'image.required' => 'An image is required.',
             'image.image' => 'The file must be a valid image.',
+            'designation.required' => 'The designation field is required.',
             'description.required' => 'The description field is required.',
         ];
     }
