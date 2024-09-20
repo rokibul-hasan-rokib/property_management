@@ -27,9 +27,9 @@ class Payment extends Model
               "number" => $request->input("number"),
               "amount" => $request->input('amount'),
               "month" => $request->input('month'),
-              "flat" => $request->input('apartment'),
+              "flat" => $request->input('flat'),
               "apartment" => $request->input('apartment'),
-              "descriptions" => $request->inputl('descriptions'),
+              "descriptions" => $request->input('descriptions'),
 
         ];
     }
@@ -50,6 +50,6 @@ class Payment extends Model
         return $payment->forceDelete();
     }
 
-    
+
 
 }

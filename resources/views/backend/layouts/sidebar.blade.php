@@ -62,7 +62,7 @@
       </li><!-- End Blank Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('services.index')}}">
+        <a class="nav-link collapsed" href="{{route('payments.index')}}">
           <i class="bi bi-file-earmark"></i>
           <span>Payment</span>
         </a>

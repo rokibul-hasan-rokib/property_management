@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentRequest;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -12,23 +15,36 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments = Payment::all();
+        return view('backend.payment.index',compact('payments'));
     }
 
+    public function index2(){
+        return view('frontend.payment.index');
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PaymentRequest $request)
     {
-        //
+        // dd($request->all());
+            try {
+                DB::beginTransaction();
+                $payment = (new Payment())->storePayment($request);
+                DB::commit();
+                return redirect()->back()->with('success',"Payment successfull");
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                return redirect()->back();
+            }
     }
 
     /**
@@ -58,8 +74,16 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Payment $payment)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Payment())->deletePayment($payment);
+            DB::commit();
+            return redirect()->back()-with('success','Deleted Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back();
+        }
     }
 }
