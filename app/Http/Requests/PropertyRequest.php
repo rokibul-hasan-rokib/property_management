@@ -22,14 +22,14 @@ class PropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'place'          => 'required|string|max:255',
+            'place'          => 'required|string',
             'image'          => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming image upload with validation
-            'rent'           => 'required|numeric|min:0|max:999999.99',
-            'house_details'  => 'required|string|max:255',
-            'bed'            => 'integer|min:0',
-            'washroom'       => 'integer|min:0',
-            'belcony'        => 'integer|min:0',
-            'kitchen'        => 'integer|min:1', // kitchen should be at least 1
+            'rent'           => 'required|numeric',
+            'house_details'  => 'required|string',
+            'bed'            => 'required|integer',
+            'washroom'       => 'required|integer',
+            'belcony'        => 'required|integer',
+            'kitchen'        => 'required|integer',
         ];
     }
 

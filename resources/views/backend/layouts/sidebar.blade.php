@@ -13,18 +13,11 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('propertys.index')}}">
           <i class="bi bi-person"></i>
           <span>Property</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('contacts.index')}}">
-          <i class="bi bi-question-circle"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="">
@@ -64,9 +57,17 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('payments.index')}}">
           <i class="bi bi-file-earmark"></i>
-          <span>Payment</span>
+          <span>Payment Details</span>
         </a>
       </li><!-- End Blank Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('contacts.index')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
 
     </ul>
 

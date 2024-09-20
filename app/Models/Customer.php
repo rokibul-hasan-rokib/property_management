@@ -42,9 +42,9 @@ class Customer extends Model
         return self::query()->create($this->prepare_data($request));
     }
 
-    final public function updateCustomer(Request $request, Builder|Model $service)
+    final public function updateCustomer(Request $request, Builder|Model $customer)
     {
-        return $service->update($this->prepare_data($request));
+        return $customer->update($this->prepare_data($request));
     }
 
     public function deleteCustomer(Customer $customer)

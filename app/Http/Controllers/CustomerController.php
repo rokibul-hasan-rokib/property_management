@@ -34,6 +34,9 @@ class CustomerController extends Controller
     {
           try {
             DB::beginTransaction();
+            $customer = (new Customer())->storeCustomer($request);
+            DB::commit();
+            return redirect()->route('customers.index')->with('success','store successfully');
           } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back();

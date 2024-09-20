@@ -39,7 +39,7 @@ class ServiceController extends Controller
             DB::beginTransaction();
             $service = (new Service())->storeService($request);
             DB::commit();
-            return redirect()->route('')->with('success','Service store successfully completed');
+            return redirect()->route('services.index')->with('success','Service store successfully completed');
          } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back();

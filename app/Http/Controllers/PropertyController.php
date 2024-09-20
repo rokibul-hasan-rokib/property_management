@@ -7,6 +7,7 @@ use App\Http\Requests\PropertyRequest;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PropertyController extends Controller
 {
@@ -15,7 +16,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $propertys = Property::all();
+        return view('backend.property.index',compact('propertys'));
     }
     public function index_front()
     {
@@ -27,7 +29,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.property.create');
     }
 
     /**
@@ -35,15 +37,21 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
+        // dd($request->all());
         try {
             DB::beginTransaction();
             $property = (new Property())->storeProperty($request);
             DB::commit();
-            return redirect()->back()->with("success","Property Addedd Successfully");
+            return redirect()->route('propertys.index')->with("success","Property Addedd Successfully");
          } catch (\Throwable $th) {
-          //throw $th;
+            DB::rollBack();
+        Log::error('Property store failed', ['error' => $th->getMessage()]);
+        return redirect()->back()->withErrors('Failed to add property. Please try again.');
          }
     }
+
+
+
 
     /**
      * Display the specified resource.

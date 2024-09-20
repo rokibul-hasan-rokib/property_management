@@ -26,7 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Serivice</h5>
                             <div class="d-flex justify-content-between mb-4">
-                                <a href="{{route('agents.create')}}" class="btn btn-primary">ServiceAdd</a>
+                                <a href="{{route('services.create')}}" class="btn btn-primary">ServiceAdd</a>
                             </div>
 
 

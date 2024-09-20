@@ -37,11 +37,11 @@
 
                         <!-- General Form Elements -->
 
-                        <form action="{{ route('owners.update', $owner->id) }}" method="POST" enctype="multipart/form-data">
+                     <form action="{{ route('owners.update', $owner->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT') <!-- Use PUT method for update -->
 
-                            <div class="form-group">
+                            <   div class="form-group">
                                 <label for="name">Name:</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', $owner->name) }}" placeholder="Enter Name">
                             </div>

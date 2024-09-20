@@ -13,32 +13,28 @@ class Property extends Model
 {
     use HasFactory;
     protected $table = 'properties'; // Specify the table name if different from default
+
     protected $fillable = [
-        'place',
-        'image',
-        'rent',
-        'house_details',
-        'bed',
-        'washroom',
-        'belcony',
-        'kitchen'
+        'place', 'image', 'rent', 'house_details', 'floor', 'apartment', 'bed', 'washroom', 'belcony', 'kitchen'
     ];
 
     final public function prepare_data(Request $request){
 
         $imagePath = null;
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('photos'); // Public directory 'public/images'
-            $file->move($destinationPath, $filename); // Move file to the desired location
-            $imagePath = 'photos/' . $filename; // Relative path to store in DB
-        }
+        if($request->hasFile('image')){
+             $file = $request->file('image');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos'); // Public directory 'public/images'
+             $file->move($destinationPath, $filename); // Move file to the desired location
+             $imagePath = 'photos/' . $filename; // Relative path to store in DB
+            }
            return [
                 "place" => $request->input('place'),
                 "image" =>$imagePath,
                 "rent" => $request->input('rent'),
                 "house_details" => $request->input('house_details'),
+                "floor" => $request->input('floor'),
+                'apartment' => $request->input('apartment'),
                 "bed" => $request->input('bed'),
                 "washroom" => $request->input('washroom'),
                 "belcony" => $request->input("belcony"),
@@ -54,7 +50,7 @@ class Property extends Model
 
     public function updateProperty(Request $request, Builder|Model $property)
     {
-        return $property->update($this->prepare_data(($request)));
+        return $property->update($this->prepare_data($request));
     }
 
     public function deleteProperty(Property $property)

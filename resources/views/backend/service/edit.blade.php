@@ -33,7 +33,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Agent Form</h5>
+                            <h5 class="card-title">Service Form</h5>
 
                             <!-- General Form Elements -->
                             <form action="{{ route('services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
