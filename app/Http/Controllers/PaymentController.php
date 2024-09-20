@@ -40,7 +40,7 @@ class PaymentController extends Controller
                 DB::beginTransaction();
                 $payment = (new Payment())->storePayment($request);
                 DB::commit();
-                return redirect()->back()->with('success',"Payment successfull");
+                return redirect()->route('example2')->with('success',"Payment successfull");
             } catch (\Throwable $th) {
                 DB::rollBack();
                 return redirect()->back();
