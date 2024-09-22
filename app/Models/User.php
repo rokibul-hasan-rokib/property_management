@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -47,4 +48,15 @@ class User extends Authenticatable
 
     const ROLE_ADMIN = 'admin';
     const DEFAULT_PASSWORD = "admin123";
+
+    final public function prepare_data (Request $request)
+    {
+        return [
+               "name" => $request->input('name'),
+               "email" => $request->input('email'),
+               "password" => bcrypt($request->input('password')),
+        ];
+    }
+
+     
 }

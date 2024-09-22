@@ -45,9 +45,15 @@ class AuthController extends Controller
 
         $userCredential = $request->only('email','password');
         if(Auth::attempt($userCredential)){
-            return redirect('/dashboard');
+            return redirect('/');
         }else{
             return back()->with('error','Email and Password is incorrect');
         }
     }
+    public function logout(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/login');
+    }
+
 }

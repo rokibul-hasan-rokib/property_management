@@ -37,6 +37,17 @@
             <li><a href="{{route('contact.front')}}">Contact Us</a></li>
             <li><a href="{{route('complain.front')}}">Complain Us</a></li>
             <li><a href="{{route('payment.front')}}">Payment</a></li>
+            @if (Auth::check())
+            <!-- User is logged in -->
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @else
+            <!-- User is not logged in -->
+            <li><a href="{{ route('login.page') }}">Login</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+        @endif
           </ul>
 
           <a

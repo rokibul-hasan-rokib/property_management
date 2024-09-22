@@ -22,10 +22,12 @@ Route::get('/dashboard', function () {
 // Route::resource(name: '',HomeController::class);
 
 
-Route::get('/register',[AuthController::class, 'loadRegister']);
+Route::get('/register',[AuthController::class, 'loadRegister'])->name('register');
 Route::post('/register',[AuthController::class, 'register'])->name('register.store');
 Route::get('/login',[AuthController::class,'loadLogin'])->name('login.page');
 Route::post('/login',[AuthController::class,'userLogin'])->name('login');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
 
 
 Route::get('property', [PropertyController::class, 'index_front'])->name('property.front');
@@ -66,5 +68,5 @@ Route::resource('abouts', AboutController::class);
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
-    
+
 });
