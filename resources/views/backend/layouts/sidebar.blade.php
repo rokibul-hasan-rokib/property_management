@@ -20,7 +20,7 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('abouts.index')}}">
           <i class="bi bi-envelope"></i>
           <span>About</span>
         </a>

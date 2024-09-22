@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,11 +12,12 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index()
     {
         $agents = Agent::all();
-        return view('frontend.home.index',compact('agents'));
+        $propertys = Property::all();
+        return view('frontend.home.index',compact('agents','propertys'));
     }
 
     /**
