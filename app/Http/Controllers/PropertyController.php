@@ -45,8 +45,8 @@ class PropertyController extends Controller
             return redirect()->route('propertys.index')->with("success","Property Addedd Successfully");
          } catch (\Throwable $th) {
             DB::rollBack();
-        Log::error('Property store failed', ['error' => $th->getMessage()]);
-        return redirect()->back()->withErrors('Failed to add property. Please try again.');
+            Log::error('Property store failed', ['error' => $th->getMessage()]);
+            return redirect()->back()->withErrors('Failed to add property. Please try again.');
          }
     }
 
