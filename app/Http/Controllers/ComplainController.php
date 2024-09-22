@@ -36,6 +36,8 @@ class ComplainController extends Controller
      */
     public function store(ComplainRequest $request)
     {
+
+        // dd($request->all());
             try {
                 DB::beginTransaction();
                 $complain = (new Complain())->storeComplain($request);

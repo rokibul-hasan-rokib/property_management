@@ -35,6 +35,7 @@
             <li><a href="{{route('service.front')}}">Services</a></li>
             <li><a href="{{route('about.front')}}">About</a></li>
             <li><a href="{{route('contact.front')}}">Contact Us</a></li>
+            <li><a href="{{route('complain.front')}}">Complain Us</a></li>
             <li><a href="{{route('payment.front')}}">Payment</a></li>
           </ul>
 

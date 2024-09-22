@@ -14,7 +14,7 @@
                         <ol class="breadcrumb text-center justify-content-center">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active text-white-50" aria-current="page">
-                                Payment
+                                Complain
                             </li>
                         </ol>
                     </nav>
@@ -103,7 +103,7 @@
 
                             <!-- Submit Button -->
                             <div class="col-12">
-                                <input type="submit" value="Submit Payment" class="btn btn-primary" />
+                                <input type="submit" value="Submit" class="btn btn-primary" />
                             </div>
                         </div>
                     </form>
