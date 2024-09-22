@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  
+
 <div class="section">
     <div class="container">
       <div class="row mb-5 align-items-center">
@@ -736,21 +736,20 @@
         </div>
       </div>
       <div class="row">
+        @foreach ($agents as $agent)
         <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
           <div class="h-100 person">
             <img
-              src="images/person_1-min.jpg"
+              src="{{ asset($agent->image) }}"
               alt="Image"
               class="img-fluid"
             />
 
             <div class="person-contents">
-              <h2 class="mb-0"><a href="#">James Doe</a></h2>
-              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <h2 class="mb-0"><a href="#">{{$agent->name}}</a></h2>
+              <span class="meta d-block mb-3">{{$agent->designation}}</span>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Facere officiis inventore cumque tenetur laboriosam, minus
-                culpa doloremque odio, neque molestias?
+                {{$agent->description}}
               </p>
 
               <ul class="social list-unstyled list-inline dark-hover">
@@ -770,7 +769,8 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+        @endforeach
+        {{-- <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
           <div class="h-100 person">
             <img
               src="images/person_2-min.jpg"
@@ -840,6 +840,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 @endsection
