@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +28,7 @@ Route::resource('abouts', AboutController::class);
 
 
 Route::get('property', [PropertyController::class, 'index_front'])->name('property.front');
+Route::get('complain', [ComplainController::class, 'index2'])->name('complain.front');
 Route::get('contact', [ContactController::class, 'index_front'])->name('contact.front');
 Route::get('service', [ServiceController::class, 'index_front'])->name('service.front');
 Route::get('payment', [PaymentController::class, 'index2'])->name('payment.front');
@@ -54,3 +56,4 @@ Route::resource('agents', AgentController::class);
 Route::resource('owners', OwnerController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('payments', PaymentController::class);
+Route::resource('complains', ComplainController::class);
