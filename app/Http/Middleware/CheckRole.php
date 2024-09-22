@@ -22,7 +22,7 @@ class CheckRole
         }
 
         $user = Auth::user();
-        if(!is_array($user->role, $roles)){
+        if(!in_array($user->role, $roles)){
             return redirect()->route('forbidden')->with('error',"You do not have permission to access this account");
         }
         return $next($request);

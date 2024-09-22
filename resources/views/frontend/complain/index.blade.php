@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="hero page-inner overlay" style="background-image: url('images/hero_bg_1.jpg')">
+    <div class="hero page-inner overlay" style="background-image: url('images/hero_bg_3.jpg')">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
