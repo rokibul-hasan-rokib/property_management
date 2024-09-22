@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -28,5 +29,14 @@ class Complain extends Model
         ];
     }
 
+   final public function storeComplain(Request $request): Builder|Model
+   {
+       return self::query()->create($this->prepare_data($request));
+   }
+
+   final public function deleteComplain(Complain $complain)
+   {
+           return $complain->forceDelete();
+   }
 
 }
