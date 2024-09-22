@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
@@ -20,11 +21,11 @@ Route::get('/dashboard', function () {
 
 // Route::resource(name: '',HomeController::class);
 
-Route::resource('propertys', PropertyController::class);
-Route::resource('contacts', ContactController::class);
-Route::resource('services', ServiceController::class);
-Route::resource('abouts', AboutController::class);
 
+Route::get('/register',[AuthController::class, 'loadRegister']);
+Route::post('/register',[AuthController::class, 'register'])->name('register.store');
+Route::get('/login',[AuthController::class,'loadLogin'])->name('login.page');
+Route::post('/login',[AuthController::class,'userLogin'])->name('login');
 
 
 Route::get('property', [PropertyController::class, 'index_front'])->name('property.front');
@@ -57,3 +58,13 @@ Route::resource('owners', OwnerController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('complains', ComplainController::class);
+
+Route::resource('propertys', PropertyController::class);
+Route::resource('contacts', ContactController::class);
+Route::resource('services', ServiceController::class);
+Route::resource('abouts', AboutController::class);
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+
+    
+});
