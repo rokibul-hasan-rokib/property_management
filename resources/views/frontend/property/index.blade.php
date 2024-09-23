@@ -75,7 +75,7 @@ style="background-image: url('images/hero_bg_1.jpg')"
                     </div>
 
                     <a
-                      href="property-single.html"
+                      href="{{route('propertys.show',$property->id)}}"
                       class="btn btn-primary py-2 px-3"
                       >See details</a
                     >
@@ -143,7 +143,7 @@ style="background-image: url('images/hero_bg_1.jpg')"
             </div>
 
             <a
-              href="property-single.html"
+              href="{{route('propertys.show',$property->id)}}"
               class="btn btn-primary py-2 px-3"
               >See details</a
             >

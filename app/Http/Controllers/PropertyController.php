@@ -26,6 +26,7 @@ class PropertyController extends Controller
         return view('frontend.property.index',compact('propertys'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -58,9 +59,9 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Property $property)
     {
-        //
+        return view('frontend.property.show',compact('property'));
     }
 
     /**
@@ -74,9 +75,18 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Property $property)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Property())->updateProperty($request, $property);
+            DB::commit();
+            return redirect()->route('propertys.index')->with("success", "Property Updated Successfully");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error('Property Updated failed', ['error' => $th->getMessage()]);
+            return redirect()->back()->withErrors('Failed to Updated property. Please try again.');
+        }
     }
 
     /**
