@@ -8,6 +8,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\TryCatch;
 
 class PropertyController extends Controller
 {
@@ -17,11 +18,12 @@ class PropertyController extends Controller
     public function index()
     {
         $propertys = Property::all();
-        return view('backend.property.index',compact('propertys'));
+        return view('backend.property.index', compact('propertys'));
     }
     public function index_front()
     {
-        return view('frontend.property.index');
+        $propertys = Property::all();
+        return view('frontend.property.index',compact('propertys'));
     }
 
     /**
@@ -42,12 +44,12 @@ class PropertyController extends Controller
             DB::beginTransaction();
             $property = (new Property())->storeProperty($request);
             DB::commit();
-            return redirect()->route('propertys.index')->with("success","Property Addedd Successfully");
-         } catch (\Throwable $th) {
+            return redirect()->route('propertys.index')->with("success", "Property Addedd Successfully");
+        } catch (\Throwable $th) {
             DB::rollBack();
             Log::error('Property store failed', ['error' => $th->getMessage()]);
             return redirect()->back()->withErrors('Failed to add property. Please try again.');
-         }
+        }
     }
 
 
@@ -64,9 +66,9 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Property $property)
     {
-        //
+        return view('backend.property.edit',compact('property'));
     }
 
     /**
@@ -80,8 +82,17 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Property $property)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Property())->deleteProperty($property);
+            DB::commit();
+            return redirect()->route('propertys.index')->with("success", "Property Deleted Successfully");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error('Property deleted failed', ['error' => $th->getMessage()]);
+            return redirect()->back()->withErrors('Failed to deleted property. Please try again.');
+        }
     }
 }
