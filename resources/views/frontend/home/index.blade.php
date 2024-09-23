@@ -71,28 +71,30 @@
         <div class="col-12">
           <div class="property-slider-wrap">
             <div class="property-slider">
-                
+
+            @foreach ($propertys as $property )
+
               <div class="property-item">
-                <a href="property-single.html" class="img">
-                  <img src="images/img_1.jpg" alt="Image" class="img-fluid" />
+                <a href="" class="img">
+                  <img src="{{$property->image}}" alt="Image" class="img-fluid" />
                 </a>
 
                 <div class="property-content">
-                  <div class="price mb-2"><span>$1,291,000</span></div>
+                  <div class="price mb-2"><span>${{$property->rent}}</span></div>
                   <div>
                     <span class="d-block mb-2 text-black-50"
-                      >5232 California Fake, Ave. 21BC</span
+                      >{{$property->house_details}}</span
                     >
-                    <span class="city d-block mb-3">California, USA</span>
+                    <span class="city d-block mb-3">{{$property->place}}</span>
 
                     <div class="specs d-flex mb-4">
                       <span class="d-block d-flex align-items-center me-3">
                         <span class="icon-bed me-2"></span>
-                        <span class="caption">2 beds</span>
+                        <span class="caption">{{$property->bed}} beds</span>
                       </span>
                       <span class="d-block d-flex align-items-center">
                         <span class="icon-bath me-2"></span>
-                        <span class="caption">2 baths</span>
+                        <span class="caption">{{$property->washroom}} baths</span>
                       </span>
                     </div>
 
@@ -104,9 +106,10 @@
                   </div>
                 </div>
               </div>
+            @endforeach
               <!-- .item -->
 
-              <div class="property-item">
+              {{-- <div class="property-item">
                 <a href="property-single.html" class="img">
                   <img src="images/img_2.jpg" alt="Image" class="img-fluid" />
                 </a>
@@ -376,7 +379,7 @@
                   </div>
                 </div>
               </div>
-              <!-- .item -->
+              <!-- .item --> --}}
             </div>
 
             <div
@@ -479,10 +482,11 @@
       </div>
       <div class="testimonial-slider-wrap">
         <div class="testimonial-slider">
+            @foreach ($customers as $customer)
           <div class="item">
             <div class="testimonial">
               <img
-                src="images/person_1-min.jpg"
+                src="{{$customer->image}}"
                 alt="Image"
                 class="img-fluid rounded-circle w-25 mb-4"
               />
@@ -493,20 +497,17 @@
                 <span class="icon-star text-warning"></span>
                 <span class="icon-star text-warning"></span>
               </div>
-              <h3 class="h5 text-primary mb-4">James Smith</h3>
+              <h3 class="h5 text-primary mb-4">{{$customer->name}}</h3>
               <blockquote>
                 <p>
-                  &ldquo;Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind
-                  texts. Separated they live in Bookmarksgrove right at the
-                  coast of the Semantics, a large language ocean.&rdquo;
+                  {{$customer->description}}
                 </p>
               </blockquote>
-              <p class="text-black-50">Designer, Co-founder</p>
+              <p class="text-black-50">{{$customer->designation}}</p>
             </div>
           </div>
-
-          <div class="item">
+          @endforeach
+          {{-- <div class="item">
             <div class="testimonial">
               <img
                 src="images/person_2-min.jpg"
@@ -587,7 +588,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>--}}
     </div>
   </div>
 
@@ -710,7 +711,7 @@
         <h2 class="mb-4">Be a part of our growing real state agents</h2>
         <p>
           <a
-            href="#"
+            href="{{route('contact.front')}}"
             target="_blank"
             class="btn btn-primary text-white py-3 px-4"
             >Apply for Real Estate agent</a

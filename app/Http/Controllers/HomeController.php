@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\Customer;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $agents = Agent::all();
+        $customers = Customer::all();
         $propertys = Property::all();
-        return view('frontend.home.index',compact('agents','propertys'));
+        return view('frontend.home.index',compact('agents','propertys','customers'));
     }
 
     /**
