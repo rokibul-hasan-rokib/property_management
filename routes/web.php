@@ -15,9 +15,6 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard.dashboard');
-})->name('dashboard');
 
 // Route::resource(name: '',HomeController::class);
 
@@ -31,10 +28,7 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 
 Route::get('property', [PropertyController::class, 'index_front'])->name('property.front');
-Route::get('complain', [ComplainController::class, 'index2'])->name('complain.front');
-Route::get('contact', [ContactController::class, 'index_front'])->name('contact.front');
 Route::get('service', [ServiceController::class, 'index_front'])->name('service.front');
-Route::get('payment', [PaymentController::class, 'index2'])->name('payment.front');
 Route::get('about', [AboutController::class, 'index_front'])->name('about.front');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -55,18 +49,36 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 
 
+
+
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+
+
 Route::resource('agents', AgentController::class);
 Route::resource('owners', OwnerController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('complains', ComplainController::class);
 
+
 Route::resource('propertys', PropertyController::class);
 Route::resource('contacts', ContactController::class);
 Route::resource('services', ServiceController::class);
 Route::resource('abouts', AboutController::class);
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::get('/dashboard', function () {
+    return view('backend.dashboard.dashboard');
+})->name('dashboard');
 
 
 });
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('complain', [ComplainController::class, 'index2'])->name('complain.front');
+    Route::get('contact', [ContactController::class, 'index_front'])->name('contact.front');
+    Route::get('payment', [PaymentController::class, 'index2'])->name('payment.front');
+
+    
+ });

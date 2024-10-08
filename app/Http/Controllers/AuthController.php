@@ -16,20 +16,29 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone_number' => 'required|string|max:20',
+            'current_address' => 'nullable|string|max:255',
+            'employment_status' => 'nullable|string|max:255',
+            'monthly_income' => 'nullable|numeric|min:0',
+            'nid' => 'nullable|string|max:255',
+            'emergency_contact' => 'nullable|string|max:255',
+            'preferred_move_in_date' => 'nullable|date',
+            'has_pets' => 'required|boolean',
+            'rental_budget' => 'nullable|numeric|min:0',
+            'password' => 'required|string|min:8',
         ]);
 
-        // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
-        // Redirect to the questions page with user ID
         return redirect()->route('login.page');
     }
 

@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,8 +21,19 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone_number',
+        'current_address',
+        'employment_status',
+        'monthly_income',
+        'nid',
+        'emergency_contact',
+        'preferred_move_in_date',
+        'has_pets',
+        'rental_budget',
         'password',
     ];
+
+    // Make sure to hide the password when serializing the model
 
     /**
      * The attributes that should be hidden for serialization.
@@ -58,5 +70,5 @@ class User extends Authenticatable
         ];
     }
 
-     
+
 }
