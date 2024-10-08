@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone_number');
+            $table->string('current_address')->nullable();
+            $table->string('employment_status')->nullable();
+            $table->decimal('monthly_income', 10, 2)->nullable();
+            $table->string('nid')->nullable();
+            $table->string('emergency_contact')->nullable();
+            $table->date('preferred_move_in_date')->nullable();
+            $table->boolean('has_pets')->default(false);
+            $table->decimal('rental_budget', 10, 2)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role',['user','admin'])->default('user');
