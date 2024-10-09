@@ -10,6 +10,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN)
 
 
       <li class="nav-item">
@@ -67,7 +68,16 @@
           <span>Contact</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
-
+      @elseif(auth()->user()->role == \App\Models\User::ROLE_USER)
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-question-circle"></i>
+          <span>Monthly Bill</span>
+        </a>
+      </li>
+      @else
+      <p>You do not have access to this section.</p>
+      @endif
 
     </ul>
 
