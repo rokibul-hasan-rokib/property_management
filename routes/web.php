@@ -52,7 +52,7 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], function () {
 
 
 Route::resource('agents', AgentController::class);
@@ -80,5 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('contact', [ContactController::class, 'index_front'])->name('contact.front');
     Route::get('payment', [PaymentController::class, 'index2'])->name('payment.front');
 
+
+    Route::get('/dashboard', function () {
+        return view('backend.dashboard.dashboard');
+    })->name('dashboard');
     
  });

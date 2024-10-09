@@ -59,6 +59,7 @@ class User extends Authenticatable
     }
 
     const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
     const DEFAULT_PASSWORD = "admin123";
 
     final public function prepare_data (Request $request)
