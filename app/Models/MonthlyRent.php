@@ -57,4 +57,10 @@ class MonthlyRent extends Model
     {
         return self::with('user')->get();
     }
+
+    public function getUserBillingHistory()
+    {
+        $user = Auth::user();
+        return self::where('user_id', $user->id)->orderBy('bill_month', 'desc')->get();
+    }
 }

@@ -92,4 +92,12 @@ class BillController extends Controller
             return redirect()->route('bills.index');
         }
     }
+
+    public function billingHistory()
+    {
+
+        $billingHistory = (new MonthlyRent)->getUserBillingHistory();
+        return view('billing.history', compact('billingHistory'));
+        
+    }
 }
