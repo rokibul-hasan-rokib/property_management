@@ -52,4 +52,9 @@ class MonthlyRent extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getRentsWithUsers()
+    {
+        return self::with('user')->get();
+    }
 }

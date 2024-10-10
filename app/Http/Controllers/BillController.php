@@ -24,7 +24,8 @@ class BillController extends Controller
      */
     public function create()
     {
-        return view('backend.bill.create');
+        $users = (new MonthlyRent)->getRentsWithUsers();
+        return view('backend.bill.create',compact('users'));
     }
 
     /**
@@ -56,7 +57,8 @@ class BillController extends Controller
      */
     public function edit(MonthlyRent $bill)
     {
-        return view('backend.bill.edit');
+        $users = (new MonthlyRent)->getRentsWithUsers();
+        return view('backend.bill.edit',compact('bill','users'));
     }
 
     /**

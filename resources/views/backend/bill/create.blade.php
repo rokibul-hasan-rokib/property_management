@@ -36,32 +36,51 @@
                             <h5 class="card-title">Agent Form</h5>
 
                             <!-- General Form Elements -->
-                            <form action="{{ route('agents.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('bills.store') }}" method="POST">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                <div class="mb-3">
+                                    <label for="user_id" class="form-label">User</label>
+                                    <select name="user_id" id="user_id" class="form-select" required>
+                                        <option value="" disabled selected>Select User</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="designation">Designation:</label>
-                                    <input type="text" name="designation" class="form-control"
-                                        placeholder="Enter Designation">
+                                <div class="mb-3">
+                                    <label for="bill_name" class="form-label">Bill Name</label>
+                                    <input type="text" name="bill_name" id="bill_name" class="form-control" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="description">Description:</label>
-                                    <textarea name="description" class="form-control" placeholder="Enter Description"></textarea>
+                                <div class="mb-3">
+                                    <label for="bill_month" class="form-label">Bill Month</label>
+                                    <input type="month" name="bill_month" id="bill_month" class="form-control" required>
                                 </div>
 
-                                <div class="form-group mb-2">
-                                    <label for="image">Image:</label>
-                                    <input type="file" name="image" class="form-control">
+                                <div class="mb-3">
+                                    <label for="bill_house" class="form-label">House Bill Amount</label>
+                                    <input type="text" name="bill_house" id="bill_house" class="form-control" required>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="bill_electrity" class="form-label">Electricity Bill Amount</label>
+                                    <input type="text" name="bill_electrity" id="bill_electrity" class="form-control" required>
+                                </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" id="status" class="form-select">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Create Bill</button>
+                                </div>
                             </form>
+
 
                         </div>
                     </div>
