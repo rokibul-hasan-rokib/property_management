@@ -95,9 +95,8 @@ class BillController extends Controller
 
     public function billingHistory()
     {
-
         $billingHistory = (new MonthlyRent)->getUserBillingHistory();
         return view('billing.history', compact('billingHistory'));
-        
+
     }
 }

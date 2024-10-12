@@ -58,6 +58,7 @@ Route::resource('customers', CustomerController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('complains', ComplainController::class);
 Route::resource('bills',BillController::class);
+Route::get('/bill/users',[BillController::class,'billingHistory'])->name('billinghistory');
 
 
 

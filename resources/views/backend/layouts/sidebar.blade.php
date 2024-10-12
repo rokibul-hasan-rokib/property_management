@@ -75,6 +75,12 @@
           <span>Monthly Bill</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('bills.index') }}">
+          <i class="bi bi-question-circle"></i>
+          <span>Monthly Bill</span>
+        </a>
+      </li>
       @else
       <p>You do not have access to this section.</p>
       @endif
