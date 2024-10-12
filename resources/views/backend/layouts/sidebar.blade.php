@@ -81,6 +81,12 @@
           <span>Monthly Bill</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('billinghistory') }}">
+          <i class="bi bi-question-circle"></i>
+          <span>Bill History</span>
+        </a>
+      </li>
       @else
       <p>You do not have access to this section.</p>
       @endif
