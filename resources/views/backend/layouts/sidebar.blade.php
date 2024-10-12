@@ -70,7 +70,7 @@
       </li><!-- End F.A.Q Page Nav -->
       @elseif(auth()->user()->role == \App\Models\User::ROLE_USER)
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{ route('bills.index') }}">
           <i class="bi bi-question-circle"></i>
           <span>Monthly Bill</span>
         </a>
