@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Pagination\Paginator;
+
 
 class MonthlyRent extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'bill_name',
+        'bill_month',
+        'bill_house',
+        'bill_electrity',
+        'status',
+    ];
 
     public const STATUS_INACTIVE = 0;
     public const STATUS_ACTIVE = 1;
@@ -32,15 +41,26 @@ class MonthlyRent extends Model
         return $bill->update($this->prepare_data($request));
     }
 
-    protected function prepare_data(Request $request){
+    final function prepare_data(Request $request){
         return[
-            "user_id" => Auth::id(),
             "bill_name" => $request->input('bill_name'),
             "bill_month" => $request->input('bill_month'),
             "bill_house" => $request->input('bill_house'),
             "bill_electrity" => $request->input('bill_electricity'),
             "status" => $request->input('status'),
         ];
+    }
+
+    public function getAllUsers()
+    {
+        // Query to fetch all users with selected fields (id and name)
+        return User::select('id', 'name')->orderBy('name', 'asc')->get();
+    }
+
+    public function getUserBillingHistory()
+    {
+        $user = Auth::user();
+        return self::where('user_id', $user->id)->orderBy('bill_month', 'desc')->get();
     }
 
     public function deleteBill(MonthlyRent $bill)
@@ -53,14 +73,5 @@ class MonthlyRent extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getRentsWithUsers()
-    {
-        return self::with('user')->get();
-    }
 
-    public function getUserBillingHistory()
-    {
-        $user = Auth::user();
-        return self::where('user_id', $user->id)->orderBy('bill_month', 'desc')->get();
-    }
 }

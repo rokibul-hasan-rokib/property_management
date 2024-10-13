@@ -33,7 +33,6 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
                                         <th>bill Name</th>
                                         <th>bill Month</th>
                                         <th>bill House</th>

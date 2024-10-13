@@ -54,6 +54,12 @@
           <span>Service</span>
         </a>
       </li><!-- End Blank Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('bills.index') }}">
+          <i class="bi bi-question-circle"></i>
+          <span>Monthly Bill</span>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('payments.index')}}">
@@ -69,18 +75,7 @@
         </a>
       </li><!-- End F.A.Q Page Nav -->
       @elseif(auth()->user()->role == \App\Models\User::ROLE_USER)
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('bills.index') }}">
-          <i class="bi bi-question-circle"></i>
-          <span>Monthly Bill</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('bills.index') }}">
-          <i class="bi bi-question-circle"></i>
-          <span>Monthly Bill</span>
-        </a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('billinghistory') }}">
           <i class="bi bi-question-circle"></i>

@@ -49,7 +49,7 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::group(['middleware' => ['auth', 'role:admin,user']], function () {
 
 
 Route::resource('agents', AgentController::class);

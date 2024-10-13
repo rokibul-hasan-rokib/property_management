@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MonthlyBillRequest;
 use App\Models\MonthlyRent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\TryCatch;
 
 class BillController extends Controller
@@ -16,7 +18,7 @@ class BillController extends Controller
     public function index()
     {
         $bills = MonthlyRent::all();
-        return view('backend.about.index',compact('bills'));
+        return view('backend.bill.index',compact('bills'));
     }
 
     /**
@@ -24,8 +26,9 @@ class BillController extends Controller
      */
     public function create()
     {
-        $users = (new MonthlyRent)->getRentsWithUsers();
-        return view('backend.bill.create',compact('users'));
+        $rents = (new MonthlyRent)->getAllUsers();
+        // $users = User::select('id', 'name')->orderBy('name', 'asc')->get();
+        return view('backend.bill.create', compact('rents'));
     }
 
     /**
@@ -33,14 +36,19 @@ class BillController extends Controller
      */
     public function store(MonthlyBillRequest $request)
     {
+        // dd($request->all());
        try {
         DB::beginTransactions();
-        $bills = (new MonthlyRent())->storeBill($request);
+        (new MonthlyRent())->storeBill($request);
         DB::commit();
         return redirect()->route('bills.index')->with('success','bill store successfully');
        } catch (\Throwable $th) {
         DB::rollBack();
-        return redirect()->route('bills.index');
+        Log::error('Failed to store bill', [
+            'error' => $th->getMessage(),
+            'request' => $request->all() // Optionally log the request data for debugging
+        ]);
+        return redirect()->back();
        }
     }
 
@@ -96,7 +104,6 @@ class BillController extends Controller
     public function billingHistory()
     {
         $billingHistory = (new MonthlyRent)->getUserBillingHistory();
-        return view('billing.history', compact('billingHistory'));
-
+        return view('backend.bill.billingHistory', compact('billingHistory'));
     }
 }
