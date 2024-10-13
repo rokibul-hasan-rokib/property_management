@@ -33,6 +33,8 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
+                                        <th>S/N</th>
+                                        <th>Name</th>
                                         <th>bill Name</th>
                                         <th>bill Month</th>
                                         <th>bill House</th>
@@ -44,6 +46,8 @@
                                 <tbody>
                                     @foreach ($bills as $bill)
                                         <tr>
+                                            <th>{{ $loop->iteration }}</th>
+                                            <th>{{ $bill->user->name }}</th>
                                             <td>{{ $bill->bill_name }}</td>
                                             <td>{{ $bill->bill_month }}</td>
                                             <td>{{ $bill->bill_house }}</td>
