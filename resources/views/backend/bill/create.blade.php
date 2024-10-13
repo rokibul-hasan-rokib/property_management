@@ -42,8 +42,8 @@
                                     <label for="user_id" class="form-label">User</label>
                                     <select name="user_id" id="user_id" class="form-select" required>
                                         <option value="" disabled selected>Select User</option>
-                                        @foreach($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @foreach ($rents as $rent)
+                                            <option value="{{ $rent->id }}">{{ $rent->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -65,15 +65,20 @@
 
                                 <div class="mb-3">
                                     <label for="bill_electrity" class="form-label">Electricity Bill Amount</label>
-                                    <input type="text" name="bill_electrity" id="bill_electrity" class="form-control" required>
+                                    <input type="text" name="bill_electrity" id="bill_electrity" class="form-control"
+                                        required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status" class="form-select">
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select name="status" id="status" class="form-select" required>
+                                            <option value="" disabled selected>Select status</option>
+                                            @foreach (\App\Models\MonthlyRent::STATUS_LIST as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">

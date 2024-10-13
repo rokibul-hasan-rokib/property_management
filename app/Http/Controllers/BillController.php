@@ -18,7 +18,7 @@ class BillController extends Controller
     public function index()
     {
         $bills = MonthlyRent::all();
-        return view('backend.bill.index',compact('bills'));
+        return view('backend.bill.index', compact('bills'));
     }
 
     /**
@@ -29,27 +29,27 @@ class BillController extends Controller
         $rents = (new MonthlyRent)->getAllUsers();
         // $users = User::select('id', 'name')->orderBy('name', 'asc')->get();
         return view('backend.bill.create', compact('rents'));
+        // return view('backend.bill.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MonthlyBillRequest $request)
+    public function store(Request $request)
     {
-        // dd($request->all());
-       try {
-        DB::beginTransactions();
-        (new MonthlyRent())->storeBill($request);
-        DB::commit();
-        return redirect()->route('bills.index')->with('success','bill store successfully');
-       } catch (\Throwable $th) {
-        DB::rollBack();
-        Log::error('Failed to store bill', [
-            'error' => $th->getMessage(),
-            'request' => $request->all() // Optionally log the request data for debugging
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'bill_name' => 'required|string|max:255',
+            'bill_month' => 'required|date_format:Y-m',  // Ensure it matches the input type
+            'bill_house' => 'required|string|max:255',
+            'bill_electrity' => 'required|string|max:255',
+            'status' => 'required|in:0,1',
         ]);
-        return redirect()->back();
-       }
+
+        $bill_month = $request->input('bill_month') . '-01';
+        MonthlyRent::create(array_merge($request->all(), ['bill_month' => $bill_month]));
+
+        return redirect()->route('bills.index')->with('success', 'Bill created successfully.');
     }
 
     /**
@@ -65,40 +65,39 @@ class BillController extends Controller
      */
     public function edit(MonthlyRent $bill)
     {
-        $users = (new MonthlyRent)->getRentsWithUsers();
-        return view('backend.bill.edit',compact('bill','users'));
+        $users = (new MonthlyRent)->getAllUsers();
+        return view('backend.bill.edit', compact('bill', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MonthlyRent $bill)
+    public function update(Request $request, $id)
     {
-      try {
-        DB::beginTransactions();
-        (new MonthlyRent())->updateBill($request, $bill);
-        DB::commit();
-        return redirect()->route('bills.index')->with('success','updated successfully');
-      } catch (\Throwable $th) {
-        DB::rollBack();
-        return redirect()->route('bills.index');
-      }
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'bill_name' => 'required|string|max:255',
+            'bill_month' => 'required|date_format:Y-m',  // Ensure it matches the input type
+            'bill_house' => 'required|string|max:255',
+            'bill_electrity' => 'required|string|max:255',
+            'status' => 'required|in:0,1',
+        ]);
+
+        $bill = MonthlyRent::findOrFail($id);
+        $bill_month = $request->input('bill_month') . '-01';
+        $bill->update(array_merge($request->all(), ['bill_month' => $bill_month]));
+        return redirect()->route('bills.index')->with('success', 'Bill updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MonthlyRent $bill)
+    public function destroy($id)
     {
-        try {
-            DB::beginTransactions();
-            (new MonthlyRent())->deleteBill($bill);
-            DB::commit();
-            return redirect()->route('bills.index')->with('success','Deleted successfully');
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return redirect()->route('bills.index');
-        }
+        $bill = MonthlyRent::findOrFail($id);
+        $bill->delete();
+        return redirect()->route('bills.index')->with('success', 'Bill deleted successfully.');
     }
 
     public function billingHistory()
