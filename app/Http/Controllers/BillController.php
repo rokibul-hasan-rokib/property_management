@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\TryCatch;
+use App\Mail\BillNotificationMail;
+use Illuminate\Support\Facades\Mail;
 
 class BillController extends Controller
 {
@@ -40,15 +42,25 @@ class BillController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'bill_name' => 'required|string|max:255',
-            'bill_month' => 'required|date_format:Y-m',  // Ensure it matches the input type
-            'bill_house' => 'required|string|max:255',
+            'bill_month' => 'required|date_format:Y-m',  
             'bill_electrity' => 'required|string|max:255',
             'status' => 'required|in:0,1',
         ]);
 
+        $user = User::find($request->user_id);
         $bill_month = $request->input('bill_month') . '-01';
-        MonthlyRent::create(array_merge($request->all(), ['bill_month' => $bill_month]));
+        $bill = MonthlyRent::create(array_merge($request->all(), ['bill_month' => $bill_month]));
 
+        $billDetails = [
+            'user' => $user,
+            'bill_name' => $bill->bill_name,
+            'bill_month' => $bill->bill_month,
+            'bill_house' => $bill->bill_house,
+            'bill_electrity' => $bill->bill_electrity,
+            'status' => $bill->status,
+        ];
+
+        Mail::to($user->email)->send(new BillNotificationMail($billDetails));
         return redirect()->route('bills.index')->with('success', 'Bill created successfully.');
     }
 
