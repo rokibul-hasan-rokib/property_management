@@ -15,7 +15,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $agents = Agent::all();
+        $agents = (new Agent)->getAllAgent();
         return view('backend.agent.index', compact('agents'));
     }
 
@@ -48,7 +48,7 @@ class AgentController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**

@@ -18,6 +18,10 @@ class Agent extends Model
         'description',
     ];
 
+    final public function getAllAgent(){
+        return $this->all();
+    }
+
     public function prepare_data(Request $request)
     {
         $imagePath = null;
