@@ -17,6 +17,9 @@ class Customer extends Model
         'designation',
         'description',
     ];
+    public function getAllCustomers(){
+        return $this->all();
+    }
 
     public function prepare_data(Request $request)
     {
@@ -24,9 +27,9 @@ class Customer extends Model
         if($request->hasFile('image')){
             $file = $request->file('image');
             $filename = time(). '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('photos'); // Public directory 'public/images'
-            $file->move($destinationPath, $filename); // Move file to the desired location
-            $imagePath = 'photos/' . $filename; // Relative path to store in DB
+            $destinationPath = public_path('photos');
+            $file->move($destinationPath, $filename); 
+            $imagePath = 'photos/' . $filename;
         }
         return [
               "name" => $request->input('name'),
