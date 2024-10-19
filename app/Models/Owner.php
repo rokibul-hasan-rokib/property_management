@@ -21,6 +21,11 @@ class Owner extends Model
         'description',
     ];
 
+    public function getAllOwners()
+    {
+        return $this->all();
+    }
+
     final public function prepare_data(Request $request)
     {
         $imagePath = null;

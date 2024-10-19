@@ -15,7 +15,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        $owners = Owner::all();
+        $owners = (new Owner)->getAllOwners();
         return view('backend.owner.index',compact('owners'));
     }
 
