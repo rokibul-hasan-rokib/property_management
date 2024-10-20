@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\CancelFlatController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
@@ -57,9 +58,9 @@ Route::resource('owners', OwnerController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('complains', ComplainController::class);
-Route::resource('bills',BillController::class);
 Route::get('/bill/users',[BillController::class,'billingHistory'])->name('billinghistory');
-
+Route::resource('bills',BillController::class);
+Route::resource('cancel_flat',CancelFlatController::class);
 
 
 Route::resource('propertys', PropertyController::class);
