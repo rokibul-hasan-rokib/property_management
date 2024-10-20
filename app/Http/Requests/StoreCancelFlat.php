@@ -11,7 +11,7 @@ class StoreCancelFlat extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreCancelFlat extends FormRequest
     public function rules(): array
     {
         return [
-            //
+           "cancel_month" => "required|string|max:255",
+           "reason" => "required|string|max:255"
         ];
     }
 }
