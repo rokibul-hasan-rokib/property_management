@@ -21,6 +21,9 @@ class CancelFlat extends Model
     {
         return $cancel_flat->update($this->prepare_data($request));
     }
+    public function delete_cancel_flat(CancelFlat $cancel_flat){
+        return $cancel_flat->delete();
+    }
 
 
     final public function prepare_data(Request $request)
