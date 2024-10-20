@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rent_cancels', function (Blueprint $table) {
+        Schema::create('cancel_flats', function (Blueprint $table) {
             $table->id();
             $table->string('cancel_month');
             $table->string('reason');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rent_cancels');
+        Schema::dropIfExists('cancel_flats');
     }
 };
