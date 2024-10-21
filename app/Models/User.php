@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 class User extends Authenticatable
 {
@@ -71,5 +72,8 @@ class User extends Authenticatable
         ];
     }
 
-
+    final public function get_user_assoc(): Collection
+    {
+        return self::query()->pluck('name', 'id');
+    }
 }

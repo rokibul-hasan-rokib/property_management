@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 class Agent extends Model
@@ -55,6 +56,9 @@ class Agent extends Model
          return $agent->forceDelete();
     }
 
-
+    final public function get_agent_assoc():Collection
+    {
+        return self::query()->pluck('name','id');
+    }
 
 }
