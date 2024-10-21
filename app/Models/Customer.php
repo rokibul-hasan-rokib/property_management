@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class Customer extends Model
 {
@@ -28,7 +29,7 @@ class Customer extends Model
             $file = $request->file('image');
             $filename = time(). '_' . $file->getClientOriginalName();
             $destinationPath = public_path('photos');
-            $file->move($destinationPath, $filename); 
+            $file->move($destinationPath, $filename);
             $imagePath = 'photos/' . $filename;
         }
         return [
@@ -54,5 +55,11 @@ class Customer extends Model
     {
         return $customer->forceDelete();
     }
+
+    final public function get_customer_assoc():Collection
+    {
+        return self::query()->pluck('name','id');
+    }
+
 
 }
