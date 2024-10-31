@@ -42,7 +42,7 @@ class BillController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'bill_name' => 'required|string|max:255',
-            'bill_month' => 'required|date_format:Y-m',  
+            'bill_month' => 'required|date_format:Y-m',
             'bill_electrity' => 'required|string|max:255',
             'status' => 'required|in:0,1',
         ]);
@@ -60,7 +60,7 @@ class BillController extends Controller
             'status' => $bill->status,
         ];
 
-        Mail::to($user->email)->send(new BillNotificationMail($billDetails));
+        // Mail::to($user->email)->send(new BillNotificationMail($billDetails));
         return redirect()->route('bills.index')->with('success', 'Bill created successfully.');
     }
 

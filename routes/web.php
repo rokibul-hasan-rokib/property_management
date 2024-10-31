@@ -70,7 +70,7 @@ Route::resource('abouts', AboutController::class);
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard.dashboard');
-})->name('dashboard');
+})->name('dashboard') ;
 
 
 });
