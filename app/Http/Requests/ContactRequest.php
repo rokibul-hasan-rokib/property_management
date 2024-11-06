@@ -25,7 +25,7 @@ class ContactRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'subject' => 'required|string|max:255',
-            'message' => 'required|string|min:10',
+            'message' => 'nullable|string|min:10',
         ];
     }
     public function messages(): array

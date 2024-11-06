@@ -25,10 +25,10 @@ class AuthController extends Controller
             'current_address' => 'nullable|string|max:255',
             'employment_status' => 'nullable|string|max:255',
             'monthly_income' => 'nullable|numeric|min:0',
-            'nid' => 'nullable|string|max:255',
+            'nid' => 'required|string|max:255',
             'emergency_contact' => 'nullable|string|max:255',
             'preferred_move_in_date' => 'nullable|date',
-            'has_pets' => 'required|boolean',
+            'has_pets' => 'nullable|boolean',
             'rental_budget' => 'nullable|numeric|min:0',
             'password' => 'required|string|min:8',
         ]);

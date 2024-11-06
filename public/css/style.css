@@ -10375,3 +10375,8 @@ nav[aria-label="breadcrumb"] li:before {
       .site-footer .social li a:hover {
         background: #00204a;
         color: #fff; }
+        .validation-error {
+            position: absolute;
+            font-size: 13px;
+            color: red;
+        }

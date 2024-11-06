@@ -46,56 +46,75 @@
 
             <!-- Name -->
             <div class="mb-3">
+                <x-required />
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name">
+                <x-validation-error :error="$errors->first('name')" />
             </div>
 
             <!-- Email -->
             <div class="mb-3">
+                <x-required />
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                <x-validation-error :error="$errors->first('email')" />
             </div>
 
             <!-- Phone Number -->
             <div class="mb-3">
+                <x-required />
                 <label for="phone_number" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number">
+                <x-validation-error :error="$errors->first('phone_number')" />
             </div>
 
             <!-- Current Address -->
             <div class="mb-3">
+                <x-required />
                 <label for="current_address" class="form-label">Current Address</label>
                 <input type="text" class="form-control" id="current_address" name="current_address" placeholder="Enter your current address">
+                <x-validation-error :error="$errors->first('current_address')" />
+
             </div>
 
             <!-- Employment Status -->
             <div class="mb-3">
                 <label for="employment_status" class="form-label">Employment Status</label>
                 <input type="text" class="form-control" id="employment_status" name="employment_status" placeholder="Your job title or employment status">
+                <x-validation-error :error="$errors->first('employe_status')" />
+
             </div>
 
             <!-- Monthly Income -->
             <div class="mb-3">
+                <x-required />
                 <label for="monthly_income" class="form-label">Monthly Income</label>
                 <input type="number" class="form-control" id="monthly_income" name="monthly_income" placeholder="Enter your monthly income" step="0.01">
+                <x-validation-error :error="$errors->first('monthly_income')" />
+
             </div>
 
             <!-- NID -->
             <div class="mb-3">
+                <x-required />
                 <label for="nid" class="form-label">National ID (NID)</label>
                 <input type="text" class="form-control" id="nid" name="nid" placeholder="Enter your National ID">
+                <x-validation-error :error="$errors->first('nid')" />
             </div>
 
             <!-- Emergency Contact -->
             <div class="mb-3">
+                <x-required />
                 <label for="emergency_contact" class="form-label">Emergency Contact</label>
                 <input type="text" class="form-control" id="emergency_contact" name="emergency_contact" placeholder="Enter emergency contact">
+                <x-validation-error :error="$errors->first('emergency_contact')" />
             </div>
 
             <!-- Preferred Move-in Date -->
             <div class="mb-3">
                 <label for="preferred_move_in_date" class="form-label">Preferred Move-in Date</label>
                 <input type="date" class="form-control" id="preferred_move_in_date" name="preferred_move_in_date">
+                <x-validation-error :error="$errors->first('preferred_move_in_date')" />
             </div>
 
             <!-- Pets -->
@@ -111,15 +130,18 @@
             <div class="mb-3">
                 <label for="rental_budget" class="form-label">Rental Budget</label>
                 <input type="number" class="form-control" id="rental_budget" name="rental_budget" placeholder="Enter your rental budget" step="0.01">
+                <x-validation-error :error="$errors->first('rental_budget')" />
             </div>
 
             <!-- Password -->
             <div class="mb-3">
+                <x-required />
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" >
+                <x-validation-error :error="$errors->first('password')" />
             </div>
 
-            
+
             <!-- Submit Button -->
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-custom">Register</button>

@@ -26,15 +26,6 @@
     <div class="section">
         <div class="container">
 
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
             <x-alert />
 
@@ -78,37 +69,50 @@
                         <div class="row">
                             <!-- Name Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Name"  />
+                                <x-validation-error :error="$errors->first('name')" />
                             </div>
 
                             <!-- Number Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="number" id="number" class="form-control" placeholder="Number"  />
+                                <x-validation-error :error="$errors->first('number')" />
                             </div>
 
                             <!-- Amount Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="number" step="0.01" name="amount" id="amount" class="form-control" placeholder="Amount"  />
+                                <x-validation-error :error="$errors->first('amount')" />
                             </div>
 
                             <!-- Month Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="month" id="month" class="form-control" placeholder="Month"  />
+                                <x-validation-error :error="$errors->first('month')" />
                             </div>
 
                             <!-- Flat Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="flat" id="flat" class="form-control" placeholder="Flat"  />
+                                <x-validation-error :error="$errors->first('flat')" />
                             </div>
 
                             <!-- Apartment Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="apartment" id="apartment" class="form-control" placeholder="Apartment"  />
+                                <x-validation-error :error="$errors->first('apartment')" />
                             </div>
 
                             <!-- Description Field -->
                             <div class="col-12 mb-3">
                                 <textarea name="descriptions" id="descriptions" cols="30" rows="7" class="form-control" placeholder="Description" ></textarea>
+                                <x-validation-error :error="$errors->first('descriptions')" />
                             </div>
 
                             <!-- Submit Button -->
