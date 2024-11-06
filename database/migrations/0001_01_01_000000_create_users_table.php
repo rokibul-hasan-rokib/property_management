@@ -26,6 +26,9 @@ return new class extends Migration
             $table->decimal('rental_budget', 10, 2)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->tinyInteger('status')->nullable()->index()->comment('1=>active,0=>inactive');
             $table->enum('role',['user','admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();
