@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CancelFlatController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\ContactController;
@@ -72,6 +73,9 @@ Route::resource('propertys', PropertyController::class);
 Route::resource('contacts', ContactController::class);
 Route::resource('services', ServiceController::class);
 Route::resource('abouts', AboutController::class);
+
+
+Route::resource('booked', BookingController::class);
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard.dashboard');
