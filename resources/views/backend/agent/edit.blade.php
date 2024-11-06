@@ -43,21 +43,26 @@
                                 @method('PUT') <!-- Use PUT method for update -->
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="name">Name:</label>
                                     <input type="text" name="name" class="form-control"
                                         value="{{ old('name', $agent->name) }}" placeholder="Enter Name">
+                                        <x-validation-error :error="$errors->first('name')" />
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="designation">Designation:</label>
                                     <input type="text" name="designation" class="form-control"
                                         value="{{ old('designation', $agent->designation) }}"
                                         placeholder="Enter Designation">
+                                        <x-validation-error :error="$errors->first('designation')" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description:</label>
                                     <textarea name="description" class="form-control" placeholder="Enter Description">{{ old('description', $agent->description) }}</textarea>
+                                    <x-validation-error :error="$errors->first('description')" />
                                 </div>
 
                                 <div class="form-group mb-2">
@@ -70,6 +75,7 @@
                                         </div>
                                         <small>Current image: {{ $agent->image }}</small>
                                     @endif
+                                    <x-validation-error :error="$errors->first('image')" />
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Update</button>

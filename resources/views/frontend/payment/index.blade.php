@@ -38,7 +38,7 @@
                             <p>
                                 43 Raymouth Rd. Baltemoer,<br />
                                 London 3910
-                            </p>
+                            </p>   
                         </div>
 
                         <div class="open-hours mt-4">

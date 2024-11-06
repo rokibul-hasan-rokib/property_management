@@ -17,15 +17,6 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <section class="section">
             <div class="row">
@@ -33,44 +24,55 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Agent Form</h5>
+                            <h5 class="card-title">Bill Create Form</h5>
 
                             <!-- General Form Elements -->
                             <form action="{{ route('bills.store') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="user_id" class="form-label">User</label>
-                                    <select name="user_id" id="user_id" class="form-select" required>
+                                    <select name="user_id" id="user_id" class="form-select">
                                         <option value="" disabled selected>Select User</option>
                                         @foreach ($rents as $rent)
                                             <option value="{{ $rent->id }}">{{ $rent->name }}</option>
                                         @endforeach
                                     </select>
+                                    <x-validation-error :error="$errors->first('user_id')" />
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="bill_name" class="form-label">Bill Name</label>
-                                    <input type="text" name="bill_name" id="bill_name" class="form-control" required>
+                                    <x-required />
+                                    <label for="bill_name" class="form-label">Name</label>
+                                    <input type="text" name="bill_name" id="bill_name" class="form-control">
+                                    <x-validation-error :error="$errors->first('bill_name')" />
                                 </div>
 
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_month" class="form-label">Bill Month</label>
-                                    <input type="month" name="bill_month" id="bill_month" class="form-control" required>
+                                    <input type="month" name="bill_month" id="bill_month" class="form-control">
+                                    <x-validation-error :error="$errors->first('bill_month')" />
                                 </div>
 
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_house" class="form-label">House Bill Amount</label>
-                                    <input type="text" name="bill_house" id="bill_house" class="form-control" required>
+                                    <input type="text" name="bill_house" id="bill_house" class="form-control">
+                                    <x-validation-error :error="$errors->first('bill_house')" />
                                 </div>
 
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_electrity" class="form-label">Electricity Bill Amount</label>
                                     <input type="text" name="bill_electrity" id="bill_electrity" class="form-control"
-                                        required>
+                                        >
+                                        <x-validation-error :error="$errors->first('bill_electrity')" />
                                 </div>
 
                                 <div class="mb-3">
                                     <div class="form-group">
+                                        <x-required />
                                         <label for="status">Status</label>
                                         <select name="status" id="status" class="form-select" required>
                                             <option value="" disabled selected>Select status</option>
@@ -78,6 +80,7 @@
                                                 <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
+                                        <x-validation-error :error="$errors->first('status')" />
                                     </div>
                                 </div>
 

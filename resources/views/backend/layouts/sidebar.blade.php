@@ -20,12 +20,12 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('abouts.index')}}">
           <i class="bi bi-envelope"></i>
           <span>About</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li><!-- End Contact Page Nav --> --}}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('owners.index')}}">
@@ -48,12 +48,12 @@
         </a>
       </li><!-- End Error 404 Page Nav -->
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('services.index')}}">
           <i class="bi bi-file-earmark"></i>
           <span>Service</span>
         </a>
-      </li><!-- End Blank Page Nav -->
+      </li><!-- End Blank Page Nav --> --}}
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('bills.index') }}">
           <i class="bi bi-question-circle"></i>

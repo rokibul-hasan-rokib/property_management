@@ -41,12 +41,15 @@
                             @csrf
                             @method('PUT') <!-- Use PUT method for update -->
 
-                            <   div class="form-group">
+                            <div class="form-group">
+                                <x-required />
                                 <label for="name">Name:</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', $owner->name) }}" placeholder="Enter Name">
+
                             </div>
 
                             <div class="form-group">
+                                <x-required />
                                 <label for="designation">Designation:</label>
                                 <input type="text" name="designation" class="form-control" value="{{ old('designation', $owner->designation) }}" placeholder="Enter Designation">
                             </div>

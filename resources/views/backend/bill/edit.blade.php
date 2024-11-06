@@ -43,8 +43,9 @@
 
                                 <!-- User Dropdown -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="user_id" class="form-label">User</label>
-                                    <select name="user_id" id="user_id" class="form-select" required>
+                                    <select name="user_id" id="user_id" class="form-select" >
                                         <option value="" disabled>Select User</option>
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}"
@@ -53,38 +54,48 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <x-validation-error :error="$errors->first('user_id')" />
                                 </div>
 
                                 <!-- Bill Name -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_name" class="form-label">Bill Name</label>
                                     <input type="text" name="bill_name" id="bill_name" class="form-control"
-                                        value="{{ $bill->bill_name }}" required>
+                                        value="{{ $bill->bill_name }}" >
+                                        <x-validation-error :error="$errors->first('bill_name')" />
                                 </div>
 
                                 <!-- Bill Month -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_month" class="form-label">Bill Month</label>
                                     <input type="month" name="bill_month" id="bill_month" class="form-control"
-                                        value="{{ \Carbon\Carbon::parse($bill->bill_month)->format('Y-m') }}" required>
+                                        value="{{ \Carbon\Carbon::parse($bill->bill_month)->format('Y-m') }}" >
+                                        <x-validation-error :error="$errors->first('bill_month')" />
                                 </div>
 
                                 <!-- House Bill Amount -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_house" class="form-label">House Bill Amount</label>
                                     <input type="text" name="bill_house" id="bill_house" class="form-control"
-                                        value="{{ $bill->bill_house }}" required>
+                                        value="{{ $bill->bill_house }}">
+                                        <x-validation-error :error="$errors->first('bill_house')" />
                                 </div>
 
                                 <!-- Electricity Bill Amount -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="bill_electrity" class="form-label">Electricity Bill Amount</label>
                                     <input type="text" name="bill_electrity" id="bill_electrity" class="form-control"
-                                        value="{{ $bill->bill_electrity }}" required>
+                                        value="{{ $bill->bill_electrity }}" >
+                                        <x-validation-error :error="$errors->first('bill_electrity')" />
                                 </div>
 
                                 <!-- Status Dropdown -->
                                 <div class="mb-3">
+                                    <x-required />
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-select" required>
                                         <option value="" disabled>Select status</option>
@@ -95,6 +106,7 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <x-validation-error :error="$errors->first('status')" />
                                 </div>
 
                                 <!-- Submit Button -->
