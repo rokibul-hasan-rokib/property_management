@@ -39,30 +39,36 @@
                             <form action="{{ route('agents.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="name">Name:</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                    <x-validation-error :error="$errors->first('name')" />
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="designation">Designation:</label>
                                     <input type="text" name="designation" class="form-control"
                                         placeholder="Enter Designation">
+                                        <x-validation-error :error="$errors->first('designation')" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description:</label>
                                     <textarea name="description" class="form-control" placeholder="Enter Description"></textarea>
+                                    <x-validation-error :error="$errors->first('description')" />
                                 </div>
 
                                 <div class="form-group mb-2">
                                     <label for="image">Image:</label>
                                     <input type="file" name="image" class="form-control">
+                                    <x-validation-error :error="$errors->first('image')" />
                                 </div>
 
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-                            
+
                         </div>
                     </div>
 

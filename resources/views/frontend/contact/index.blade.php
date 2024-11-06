@@ -68,26 +68,33 @@
                         <div class="row">
                             <!-- Name Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="text" name="name" id="name" class="form-control"
                                     placeholder="Your Name"  />
+                                    <x-validation-error :error="$errors->first('name')" />
                             </div>
 
                             <!-- Email Field -->
                             <div class="col-6 mb-3">
+                                <x-required />
                                 <input type="email" name="email" id="email" class="form-control"
                                     placeholder="Your Email"  />
+                                    <x-validation-error :error="$errors->first('email')" />
                             </div>
 
                             <!-- Subject Field -->
                             <div class="col-12 mb-3">
+                                <x-required />
                                 <input type="text" name="subject" id="subject" class="form-control"
-                                    placeholder="Subject"  />
+                                    placeholder="Subject" />
+                                    <x-validation-error :error="$errors->first('subject')" />
                             </div>
 
                             <!-- Message Field -->
                             <div class="col-12 mb-3">
                                 <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message"
                                     ></textarea>
+                                    <x-validation-error :error="$errors->first('message')" />
                             </div>
 
                             <!-- Submit Button -->

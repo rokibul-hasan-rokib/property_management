@@ -34,18 +34,16 @@
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="form-group">
+                            <x-required />
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" required>
-                            @error('email')
-                                <span>{{ $message }}</span>
-                            @enderror
+                            <x-validation-error :error="$errors->first('email')" />
                         </div>
                         <div class="form-group mb-2">
+                            <x-required />
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
-                            @error('email')
-                                <span>{{ $message }}</span>
-                            @enderror
+                            <x-validation-error :error="$errors->first('password')" />
                         </div>
 
                         <button type="submit" class="btn btn-primary">Login</button>

@@ -39,11 +39,13 @@
     <form action="{{ route('owners.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
+            <x-required />
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" placeholder="Enter Name">
         </div>
 
         <div class="form-group">
+            <x-required />
             <label for="designation">Designation:</label>
             <input type="text" name="designation" class="form-control" placeholder="Enter Designation">
         </div>

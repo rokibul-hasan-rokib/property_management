@@ -31,6 +31,6 @@ class BillNotificationMail extends Mailable
     public function build()
     {
         return $this->subject('New Bill Notification')
-                    ->view('emails.billNotification');
+                    ->view('emails.billNotifications');
     }
 }
