@@ -9,6 +9,7 @@ use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OtpVerificationController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PropertyController;
@@ -33,6 +34,10 @@ Route::get('property', [PropertyController::class, 'index_front'])->name('proper
 Route::get('service', [ServiceController::class, 'index_front'])->name('service.front');
 Route::get('about', [AboutController::class, 'index_front'])->name('about.front');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('verify-otp', [OtpVerificationController::class, 'showOtpForm'])->name('verify.otp.form');
+Route::post('verify-otp', [OtpVerificationController::class, 'verifyOtp'])->name('verify.otp');
+Route::get('verify-notice', [OtpVerificationController::class, 'verificationNotice'])->name('verification.notice');
 
 
 // SSLCOMMERZ Start
