@@ -39,10 +39,14 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'bill_name' => 'required|string|max:255',
-            'bill_month' => 'required|date_format:Y-m',
+            'bill_month' => 'required|string|max:255',
+            'bill_house' => 'required|string|max:255',
+            'bill_gas' => 'required|string|max:255',
+            'bill_water' => 'required|string|max:255',
             'bill_electrity' => 'required|string|max:255',
             'status' => 'required|in:0,1',
         ]);
@@ -55,11 +59,13 @@ class BillController extends Controller
             'user' => $user,
             'bill_name' => $bill->bill_name,
             'bill_month' => $bill->bill_month,
+            'bill_gas' => $bill->bill_gas,
+            'bill_water' => $bill->bill_month,
             'bill_house' => $bill->bill_house,
             'bill_electrity' => $bill->bill_electrity,
             'status' => $bill->status,
         ];
-
+        alert_success(__('Bill Created Successfully'));
         // Mail::to($user->email)->send(new BillNotificationMail($billDetails));
         return redirect()->route('bills.index')->with('success', 'Bill created successfully.');
     }

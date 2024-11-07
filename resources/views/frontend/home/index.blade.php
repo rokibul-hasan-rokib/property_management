@@ -60,7 +60,6 @@
           <p>
             <a
               href="{{route('property.front')}}"
-              target="_blank"
               class="btn btn-primary text-white py-3 px-4"
               >View all properties</a
             >

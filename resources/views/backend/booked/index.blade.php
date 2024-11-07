@@ -47,6 +47,9 @@
                                         <td>{{ $book->email }}</td>
                                         <td>{{ $book->phone }}</td>
                                         <td>{{ $book->status }}</td>
+                                        <td>
+                                            <x-delete-button :route="route('booked.destroy', $book->id)"/>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
