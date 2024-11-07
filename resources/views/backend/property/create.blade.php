@@ -40,6 +40,7 @@
                             <form action="{{ route('propertys.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="place">Place:</label>
                                     <input type="text" name="place" class="form-control"
                                         value="{{ old('place', $property->place ?? '') }}" placeholder="Enter Place"
@@ -47,17 +48,20 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="rent">Rent (in decimal):</label>
                                     <input type="number" step="0.01" name="rent" class="form-control"
                                         value="{{ old('rent', $property->rent ?? '') }}" placeholder="Enter Rent" required>
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="house_details">House Details:</label>
                                     <textarea name="house_details" class="form-control" placeholder="Enter House Details" required>{{ old('house_details', $property->house_details ?? '') }}</textarea>
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="floor">Floor:</label>
                                     <input type="number" name="floor" class="form-control"
                                         value="{{ old('floor', $property->floor ?? '') }}" placeholder="Enter Floor"
@@ -65,6 +69,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="apartment">Apartment:</label>
                                     <input type="text" name="apartment" class="form-control"
                                         value="{{ old('apartment', $property->apartment ?? '') }}"
@@ -72,12 +77,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="bed">Bed:</label>
                                     <input type="number" name="bed" class="form-control"
                                         value="{{ old('bed', $property->bed ?? 0) }}" placeholder="Number of Beds">
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="washroom">Washroom:</label>
                                     <input type="number" name="washroom" class="form-control"
                                         value="{{ old('washroom', $property->washroom ?? 0) }}"
@@ -85,6 +92,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="belcony">Belcony:</label>
                                     <input type="number" name="belcony" class="form-control"
                                         value="{{ old('belcony', $property->belcony ?? 0) }}"
@@ -92,6 +100,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <x-required />
                                     <label for="kitchen">Kitchen:</label>
                                     <input type="number" name="kitchen" class="form-control"
                                         value="{{ old('kitchen', $property->kitchen ?? 1) }}"
@@ -99,20 +108,21 @@
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="image">Image:</label>
+                                    <x-required />
+                                    <label for="image">Image1:</label>
                                     <input type="file" name="image" class="form-control" required>
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="image2">Image:</label>
-                                    <input type="file" name="image2" class="form-control" required>
+                                    <label for="image2">Image2:</label>
+                                    <input type="file" name="image2" class="form-control" >
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="image3">Image:</label>
-                                    <input type="file" name="image4" class="form-control" required>
+                                    <label for="image3">Image3:</label>
+                                    <input type="file" name="image3" class="form-control" >
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="image4">Image:</label>
-                                    <input type="file" name="image4" class="form-control" required>
+                                    <label for="image4">Image4:</label>
+                                    <input type="file" name="image4" class="form-control" >
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -23,7 +23,10 @@ class PropertyRequest extends FormRequest
     {
         return [
             'place'          => 'required|string',
-            'image'          => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming image upload with validation
+            'image'          => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image2'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image3'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image4'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rent'           => 'required|numeric',
             'house_details'  => 'required|string',
             'bed'            => 'required|integer',

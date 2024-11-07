@@ -15,55 +15,44 @@ class Property extends Model
     protected $table = 'properties'; // Specify the table name if different from default
 
     protected $fillable = [
-        'place', 'image', 'rent', 'house_details', 'floor', 'apartment', 'bed', 'washroom', 'belcony', 'kitchen'
+        'place', 'image','image2','image3','image4', 'rent', 'house_details', 'floor', 'apartment', 'bed', 'washroom', 'belcony', 'kitchen'
     ];
 
-    final public function prepare_data(Request $request){
+    final public function prepare_data(Request $request)
+    {
+        // Function to handle image upload
+        $uploadImage = function ($imageKey) use ($request) {
+            if ($request->hasFile($imageKey)) {
+                $file = $request->file($imageKey);
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $destinationPath = public_path('photos'); // Public directory 'public/photos'
+                $file->move($destinationPath, $filename); // Move file to the desired location
+                return 'photos/' . $filename; // Relative path to store in DB
+            }
+            return null;
+        };
 
-        $imagePath = null;
-        if($request->hasFile('image')){
-             $file = $request->file('image');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos'); // Public directory 'public/images'
-             $file->move($destinationPath, $filename); // Move file to the desired location
-             $imagePath = 'photos/' . $filename; // Relative path to store in DB
-            }
-        if($request->hasFile('image2')){
-             $file = $request->file('image');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos'); // Public directory 'public/images'
-             $file->move($destinationPath, $filename); // Move file to the desired location
-             $imagePath = 'photos/' . $filename; // Relative path to store in DB
-            }
-        if($request->hasFile('image3')){
-             $file = $request->file('image');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos'); // Public directory 'public/images'
-             $file->move($destinationPath, $filename); // Move file to the desired location
-             $imagePath = 'photos/' . $filename; // Relative path to store in DB
-            }
-        if($request->hasFile('image4')){
-             $file = $request->file('image');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos'); // Public directory 'public/images'
-             $file->move($destinationPath, $filename); // Move file to the desired location
-             $imagePath = 'photos/' . $filename; // Relative path to store in DB
-            }
-           return [
-                "place" => $request->input('place'),
-                "image" =>$imagePath,
-                "image2" =>$imagePath,
-                "image3" =>$imagePath,
-                "image4" =>$imagePath,
-                "rent" => $request->input('rent'),
-                "house_details" => $request->input('house_details'),
-                "floor" => $request->input('floor'),
-                'apartment' => $request->input('apartment'),
-                "bed" => $request->input('bed'),
-                "washroom" => $request->input('washroom'),
-                "belcony" => $request->input("belcony"),
-                "kitchen" => $request->input("kitchen"),
-           ];
+        // Upload each image
+        $imagePath = $uploadImage('image');
+        $imagePath2 = $uploadImage('image2');
+        $imagePath3 = $uploadImage('image3');
+        $imagePath4 = $uploadImage('image4');
+
+        return [
+            "place" => $request->input('place'),
+            "image" => $imagePath,
+            "image2" => $imagePath2,
+            "image3" => $imagePath3,
+            "image4" => $imagePath4,
+            "rent" => $request->input('rent'),
+            "house_details" => $request->input('house_details'),
+            "floor" => $request->input('floor'),
+            'apartment' => $request->input('apartment'),
+            "bed" => $request->input('bed'),
+            "washroom" => $request->input('washroom'),
+            "belcony" => $request->input("belcony"),
+            "kitchen" => $request->input("kitchen"),
+        ];
     }
 
     final public function storeProperty(Request $request): Builder|Model
