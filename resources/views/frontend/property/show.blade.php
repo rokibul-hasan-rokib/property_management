@@ -50,6 +50,7 @@
                     </div>
                 </div>
 
+
                 <div class="col-lg-4">
                     <h2 class="heading text-primary">{{ $property->house_details }}</h2>
                     <p class="meta">{{ $property->place }}</p>
@@ -96,7 +97,11 @@
             </div>
         </div>
     </div>
-
+    <div>
+        <iframe style="border:0; width: 100%; height: 350px;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.1412052702985!2d90.4220306741039!3d23.849119084981663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c671012602eb%3A0x27761cc8da96b3b7!2sNorthern%20University%20Bangladesh%2C%20Permanent%20Campus!5e0!3m2!1sen!2sbd!4v1730969852030!5m2!1sen!2sbd"
+            frameborder="0" allowfullscreen></iframe>
+    </div>
     <!-- Modal to show the larger image as a carousel -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
