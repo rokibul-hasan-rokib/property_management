@@ -34,9 +34,10 @@
                 <div class="col-lg-7">
                     <div class="img-property-slide-wrap">
                         <div class="img-property-slide">
-                            <img src="{{ $property->image }}" alt="Image" class="img-fluid" />
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid" />
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid" />
+                            <img src="{{ asset($property->image) }}" alt="Image" class="img-fluid" />
+                            <img src="{{ asset($property->image2) }}" alt="Image" class="img-fluid" />
+                            <img src="{{ asset($property->image3) }}" alt="Image" class="img-fluid" />
+                            <img src="{{ asset($property->image4) }}" alt="Image" class="img-fluid" />
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
 
                     <div class="d-block agent-box p-5">
                         <div class="img mb-4">
-                            <img src="images/person_2-min.jpg" alt="Image" class="img-fluid" />
+                            <img src="{{asset('images/person_2-min.jpg')}}" alt="Image" class="img-fluid" />
                         </div>
                         <div class="text">
                             <h3 class="mb-0">Alicia Huston</h3>
