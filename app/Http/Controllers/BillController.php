@@ -106,6 +106,7 @@ class BillController extends Controller
         $bill = MonthlyRent::findOrFail($id);
         $bill_month = $request->input('bill_month') . '-01';
         $bill->update(array_merge($request->all(), ['bill_month' => $bill_month]));
+        alert_success(__('Bills Updated Successfully'));
         return redirect()->route('bills.index')->with('success', 'Bill updated successfully.');
     }
 

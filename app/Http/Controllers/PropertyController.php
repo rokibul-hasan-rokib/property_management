@@ -45,6 +45,7 @@ class PropertyController extends Controller
             DB::beginTransaction();
             $property = (new Property())->storeProperty($request);
             DB::commit();
+            alert_success(__('Property Created Successfully'));
             return redirect()->route('propertys.index')->with("success", "Property Addedd Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -81,6 +82,7 @@ class PropertyController extends Controller
             DB::beginTransaction();
             (new Property())->updateProperty($request, $property);
             DB::commit();
+            alert_success(__('Property Updated Successfully'));
             return redirect()->route('propertys.index')->with("success", "Property Updated Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -98,6 +100,7 @@ class PropertyController extends Controller
             DB::beginTransaction();
             (new Property())->deleteProperty($property);
             DB::commit();
+            alert_success(__('Property Deleted Successfully'));
             return redirect()->route('propertys.index')->with("success", "Property Deleted Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();

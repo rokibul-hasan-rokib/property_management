@@ -42,6 +42,7 @@ class ComplainController extends Controller
                 DB::beginTransaction();
                 $complain = (new Complain())->storeComplain($request);
                 DB::commit();
+                alert_success(__('Complain Send Successfully'));
                 return redirect()->route('complain.front')->with('success','Your complain send successfully');
             } catch (\Throwable $th) {
                 DB::rollBack();
@@ -83,6 +84,7 @@ class ComplainController extends Controller
             DB::beginTransaction();
             (new Complain())->deleteComplain($complain);
             DB::commit();
+            alert_success(__('Complain Deleted Successfully'));
             return redirect()->route('complains.index')->with('success','deleted successfully completed');
         } catch (\Throwable $th) {
             DB::rollBack();

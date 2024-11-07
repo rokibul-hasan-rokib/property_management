@@ -36,6 +36,7 @@ class OwnerController extends Controller
             DB::beginTransaction();
             $owner = (new Owner())->storeOwner($request);
             DB::commit();
+            alert_success(__('Owner Created Successfully'));
             return redirect()->route('owners.index')->with('success', "Owner Created Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -68,6 +69,7 @@ class OwnerController extends Controller
             DB::beginTransaction();
             (new Owner())->updateOwner($request, $owner);
             DB::commit();
+            alert_success(__('Owner Updated Successfully'));
             return redirect()->route('owners.index')->with('Success',"Owner created Successfully0");
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -84,6 +86,7 @@ class OwnerController extends Controller
             DB::beginTransaction();
             (new Owner())->deleteOwner($owner);
             DB::commit();
+            alert_success(__('Owner Deleted Successfully'));
             return redirect()->route('owners.index')->with('success', "Owner Created Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();

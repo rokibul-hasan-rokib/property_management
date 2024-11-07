@@ -36,6 +36,7 @@ class CustomerController extends Controller
             DB::beginTransaction();
             $customer = (new Customer())->storeCustomer($request);
             DB::commit();
+            alert_success(__('Customer Review Created Successfully'));
             return redirect()->route('customers.index')->with('success','store successfully');
           } catch (\Throwable $th) {
             DB::rollBack();
@@ -69,6 +70,7 @@ class CustomerController extends Controller
             DB::beginTransaction();
             (new Customer())->updateCustomer($request,$customer);
             DB::commit();
+            alert_success(__('Customer Review Updated Successfully'));
             return redirect()->route('customers.index')->with('success','Customer Updated Successfully');
           } catch (\Throwable $th) {
             DB::rollBack();
@@ -87,6 +89,7 @@ class CustomerController extends Controller
             DB::beginTransaction();
             (new Customer())->deleteCustomer($customer);
             DB::commit();
+            alert_success(__('Customer Deleted Successfully'));
             return redirect()->route('customers.index')->with('success','customer deleted Successfully');
           } catch (\Throwable $th) {
             DB::rollBack();

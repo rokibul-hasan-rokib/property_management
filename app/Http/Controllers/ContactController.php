@@ -40,6 +40,7 @@ class ContactController extends Controller
             DB::beginTransaction();
             $contact = (new Contact())->storeContact($request);
             DB::commit();
+            alert_success(__('Information Send Successfully'));
             return redirect()->route('contact.front')->with('success','Contact Information Send Successfully');
          } catch (\Throwable $th) {
             DB::rollBack();
@@ -80,6 +81,7 @@ class ContactController extends Controller
         DB::beginTransaction();
         (new Contact())->deleteContact($contact);
         DB::commit();
+        alert_success(__('Contact Deleted Successfully'));
         return redirect()->route('contacts.index')->with('success','Deleted successfully');
        } catch (\Throwable $th) {
         DB::rollBack();

@@ -36,6 +36,7 @@ class AgentController extends Controller
             DB::beginTransaction();
             $agent = (new Agent())->storeAgent($request);
             DB::commit();
+            alert_success(__('Agent Created Successfully'));
             return redirect()->route('agents.index')->with('success','Agent Created Successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -68,6 +69,7 @@ class AgentController extends Controller
             DB::beginTransaction();
             (new Agent())->updateAgent($request, $agent);
             DB::commit();
+            alert_success(__('Agent Updated Successfully'));
             return redirect()->route('agents.index')->with('success',"Agent Updated Successfully");
         } catch (\Throwable $th) {
             DB::rollBack();
