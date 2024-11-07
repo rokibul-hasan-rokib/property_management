@@ -34,13 +34,14 @@
                 <div class="col-lg-7">
                     <div class="img-property-slide-wrap">
                         <div class="img-property-slide">
-                            <img src="{{ asset($property->image) }}" alt="Image" class="img-fluid" />
-                            <img src="{{ asset($property->image2) }}" alt="Image" class="img-fluid" />
-                            <img src="{{ asset($property->image3) }}" alt="Image" class="img-fluid" />
-                            <img src="{{ asset($property->image4) }}" alt="Image" class="img-fluid" />
+                            <img src="{{ asset($property->image) }}" alt="Image 1" class="img-fluid thumbnail-image" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="{{ asset($property->image) }}" />
+                            <img src="{{ asset($property->image2) }}" alt="Image 2" class="img-fluid thumbnail-image" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="{{ asset($property->image2) }}" />
+                            <img src="{{ asset($property->image3) }}" alt="Image 3" class="img-fluid thumbnail-image" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="{{ asset($property->image3) }}" />
+                            <img src="{{ asset($property->image4) }}" alt="Image 4" class="img-fluid thumbnail-image" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="{{ asset($property->image4) }}" />
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <h2 class="heading text-primary">{{ $property->house_details }}</h2>
                     <p class="meta">{{ $property->place }}</p>
@@ -87,4 +88,26 @@
             </div>
         </div>
     </div>
+
+      <!-- Modal to show the larger image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-body text-center p-0">
+                <!-- Image will be dynamically inserted here -->
+                <img id="modalImage" src="" alt="Large Image" class="img-fluid w-100" />
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // This script will dynamically load the image into the modal when an image is clicked
+document.querySelectorAll('.thumbnail-image').forEach(image => {
+    image.addEventListener('click', function() {
+        var largeImageSrc = this.getAttribute('data-bs-img');
+        document.getElementById('modalImage').src = largeImageSrc;
+    });
+});
+    </script>
 @endsection
