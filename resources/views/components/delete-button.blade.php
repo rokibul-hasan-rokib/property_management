@@ -15,15 +15,27 @@
 
 <script>
     function confirmDelete(event) {
+        event.preventDefault(); // Prevent form submission until user confirms
+
         const button = event.target.querySelector('.delete_swal');
         const title = button.getAttribute('data-title');
         const text = button.getAttribute('data-text');
+        const confirmButtonText = button.getAttribute('data-button_text');
 
-        const confirmation = confirm(`${title}\n\n${text}`);
-
-        if (!confirmation) {
-            event.preventDefault(); // Stop form submission if not confirmed
-            return false;
-        }
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: confirmButtonText,
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                event.target.submit();
+            }
+        });
     }
 </script>
