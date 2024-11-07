@@ -36,7 +36,7 @@ class OtpVerificationController extends Controller
             $otp->update(['is_used' => true]);
             $user->markEmailAsVerified();
 
-            return redirect()->route('home')->with('success', 'Email verified successfully.');
+            return redirect()->route('login')->with('success', 'Email verified successfully.');
         }
 
         return back()->withErrors(['otp' => 'The provided OTP is invalid or has been used.']);

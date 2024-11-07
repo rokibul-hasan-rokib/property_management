@@ -17,7 +17,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -37,14 +37,21 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'current_address' => $request->current_address,
+            'employment_status' => $request->employment_status,
+            'monthly_income' => $request->monthly_income,
+            'nid' => $request->nid,
+            'emergency_contact' => $request->emergency_contact,
+            'preferred_move_in_date' => $request->preferred_move_in_date,
+            'has_pets'=>$request->has_pets,
+            'rental_budget'=>$request->rental_budget,
             'password' => Hash::make($request->password),
         ]);
-        
+
         $user->sendOtpNotification();
 
         return redirect()->route('verification.notice');
 
-        return redirect()->route('login.page');
     }
 
     public function loadLogin(){

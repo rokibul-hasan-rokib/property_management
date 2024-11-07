@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
-            $table->tinyInteger('status')->nullable()->index()->comment('1=>active,0=>inactive');
+            $table->tinyInteger('status')->nullable()->index()->comment('1=>active,0=>inactive')->default(0);
             $table->enum('role',['user','admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();

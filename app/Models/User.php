@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Notifications\OtpNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
@@ -32,6 +34,15 @@ class User extends Authenticatable
         'has_pets',
         'rental_budget',
         'password',
+    ];
+
+    public const STATUS_ACTIVE = 1;
+
+    public const STATUS_INACTIVE = 0;
+
+    public const STATUS_LIST = [
+        self::STATUS_ACTIVE => 'Active',
+        self::STATUS_INACTIVE => 'Inactive',
     ];
 
     // Make sure to hide the password when serializing the model
@@ -70,6 +81,40 @@ class User extends Authenticatable
                "email" => $request->input('email'),
                "password" => bcrypt($request->input('password')),
         ];
+    }
+
+    final public function getAllUserForUpdate()
+    {
+        return self::query()
+        ->select('id', 'role', 'name', 'status')
+        ->orderby('id','desc')
+        ->get();
+    }
+
+    final public function prepareDataForUpdate(Request $request)
+    {
+        return [
+              'status' => $request->input('status'),
+              'role'  => $request->input('role'),
+        ];
+    }
+
+    public function sendOtpNotification()
+    {
+        $otp = rand(100000, 999999); // Generate a 6-digit OTP
+
+        Otp::create([
+            'user_id' => $this->id,
+            'otp' => $otp,
+            'is_used' => false,
+        ]);
+
+        $this->notify(new OtpNotification($otp));
+    }
+
+    final public function updateUser(Request $request, User $user)
+    {
+        return $user->update($this->prepareDataForUpdate($request));
     }
 
     final public function get_user_assoc(): Collection
