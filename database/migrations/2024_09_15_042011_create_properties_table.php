@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('place');
             $table->string('image');
+            $table->string('image2');
+            $table->string('image3');
+            $table->string('image4');
             $table->decimal('rent', 8,2);
             $table->string('house_details');
             $table->integer('floor');

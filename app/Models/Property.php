@@ -28,9 +28,33 @@ class Property extends Model
              $file->move($destinationPath, $filename); // Move file to the desired location
              $imagePath = 'photos/' . $filename; // Relative path to store in DB
             }
+        if($request->hasFile('image2')){
+             $file = $request->file('image');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos'); // Public directory 'public/images'
+             $file->move($destinationPath, $filename); // Move file to the desired location
+             $imagePath = 'photos/' . $filename; // Relative path to store in DB
+            }
+        if($request->hasFile('image3')){
+             $file = $request->file('image');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos'); // Public directory 'public/images'
+             $file->move($destinationPath, $filename); // Move file to the desired location
+             $imagePath = 'photos/' . $filename; // Relative path to store in DB
+            }
+        if($request->hasFile('image4')){
+             $file = $request->file('image');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos'); // Public directory 'public/images'
+             $file->move($destinationPath, $filename); // Move file to the desired location
+             $imagePath = 'photos/' . $filename; // Relative path to store in DB
+            }
            return [
                 "place" => $request->input('place'),
                 "image" =>$imagePath,
+                "image2" =>$imagePath,
+                "image3" =>$imagePath,
+                "image4" =>$imagePath,
                 "rent" => $request->input('rent'),
                 "house_details" => $request->input('house_details'),
                 "floor" => $request->input('floor'),

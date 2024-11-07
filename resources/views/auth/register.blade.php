@@ -142,6 +142,24 @@
             </div>
 
 
+            <!-- image1 -->
+            <div class="mb-3">
+                <x-required />
+                <label for="image1" class="form-label">NID Front</label>
+                <input type="file" name="image1" class="form-control" >
+                <x-validation-error :error="$errors->first('image1')" />
+            </div>
+
+
+            <!-- image2 -->
+            <div class="mb-3">
+                <x-required />
+                <label for="image2" class="form-label">NID Back</label>
+                <input type="file" name="image2" class="form-control">
+                <x-validation-error :error="$errors->first('image2')" />
+            </div>
+
+
             <!-- Submit Button -->
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-custom">Register</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booked;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -13,7 +14,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $books = (new Booked)->getAllBookedLists();
+        return view('backend.booked.index', compact("books"));
     }
 
     /**
@@ -40,7 +42,7 @@ class BookingController extends Controller
             'email' => $user->email,
             'phone' => $user->phone_number,
         ]);
-
+        alert_success(__('Booked Request Successfully Sent'));
         return redirect()->back()->with('success', 'Booking completed successfully!');
     }
 
@@ -55,24 +57,40 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Booked $book)
     {
-        //
+        return view('backend.booked.edit', compact('book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Booked $book)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Booked)->updateBooked($request, $book);
+            DB::commit();
+            return redirect()->route('booked.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Booked $book)
     {
-        //
+        try {
+            DB::beginTransaction();
+            (new Booked)->deleteBooked($book);
+            DB::commit();
+            return redirect()->route('booked.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 }

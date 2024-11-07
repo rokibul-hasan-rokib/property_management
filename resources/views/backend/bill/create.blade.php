@@ -61,6 +61,18 @@
                                     <input type="text" name="bill_house" id="bill_house" class="form-control">
                                     <x-validation-error :error="$errors->first('bill_house')" />
                                 </div>
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="bill_gas" class="form-label">Gas Bill Amount</label>
+                                    <input type="text" name="bill_gas" id="bill_gas" class="form-control">
+                                    <x-validation-error :error="$errors->first('bill_gas')" />
+                                </div>
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="bill_water" class="form-label">Water Bill Amount</label>
+                                    <input type="text" name="bill_water" id="bill_water" class="form-control">
+                                    <x-validation-error :error="$errors->first('bill_water')" />
+                                </div>
 
                                 <div class="mb-3">
                                     <x-required />

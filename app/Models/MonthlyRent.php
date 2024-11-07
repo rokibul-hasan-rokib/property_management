@@ -19,6 +19,8 @@ class MonthlyRent extends Model
         'bill_name',
         'bill_month',
         'bill_house',
+        'bill_gas',
+        'bill_water',
         'bill_electrity',
         'status',
     ];
@@ -46,6 +48,8 @@ class MonthlyRent extends Model
             "bill_name" => $request->input('bill_name'),
             "bill_month" => $request->input('bill_month'),
             "bill_house" => $request->input('bill_house'),
+            "bill_gas" => $request->input('bill_gas'),
+            "bill_water" => $request->input('bill_water'),
             "bill_electrity" => $request->input('bill_electricity'),
             "status" => $request->input('status'),
         ];

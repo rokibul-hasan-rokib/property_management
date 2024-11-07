@@ -19,3 +19,5 @@
 <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
 <link rel="stylesheet" href="{{asset('css/aos.css')}}" />
 <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.css" rel="stylesheet" />

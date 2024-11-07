@@ -34,6 +34,8 @@ class User extends Authenticatable
         'has_pets',
         'rental_budget',
         'password',
+        'image1',
+        'image2',
     ];
 
     public const STATUS_ACTIVE = 1;

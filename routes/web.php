@@ -73,9 +73,10 @@ Route::resource('propertys', PropertyController::class);
 Route::resource('contacts', ContactController::class);
 Route::resource('services', ServiceController::class);
 Route::resource('abouts', AboutController::class);
-
-
 Route::resource('booked', BookingController::class);
+
+
+
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard.dashboard');

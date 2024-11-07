@@ -102,6 +102,18 @@
                                     <label for="image">Image:</label>
                                     <input type="file" name="image" class="form-control" required>
                                 </div>
+                                <div class="form-group mb-2">
+                                    <label for="image2">Image:</label>
+                                    <input type="file" name="image2" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label for="image3">Image:</label>
+                                    <input type="file" name="image4" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label for="image4">Image:</label>
+                                    <input type="file" name="image4" class="form-control" required>
+                                </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

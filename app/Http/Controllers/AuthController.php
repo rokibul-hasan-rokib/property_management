@@ -31,7 +31,24 @@ class AuthController extends Controller
             'has_pets' => 'nullable|boolean',
             'rental_budget' => 'nullable|numeric|min:0',
             'password' => 'required|string|min:8',
+            'image1' =>'nullable',
+            'image2' => 'nullable'
         ]);
+        $imagePath = null;
+        if($request->hasFile('image1')){
+             $file = $request->file('image1');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos');
+             $file->move($destinationPath, $filename);
+             $imagePath = 'photos/' . $filename;
+            }
+        if($request->hasFile('image2')){
+             $file = $request->file('image2');
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $destinationPath = public_path('photos');
+             $file->move($destinationPath, $filename);
+             $imagePath = 'photos/' . $filename; 
+            }
 
         $user = User::create([
             'name' => $request->name,
@@ -46,6 +63,8 @@ class AuthController extends Controller
             'has_pets'=>$request->has_pets,
             'rental_budget'=>$request->rental_budget,
             'password' => Hash::make($request->password),
+            "image2" =>$imagePath,
+            "image1" =>$imagePath,
         ]);
 
         $user->sendOtpNotification();

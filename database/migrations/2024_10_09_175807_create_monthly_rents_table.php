@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('bill_name');
             $table->date('bill_month');
             $table->string('bill_house');
+            $table->string('bill_gas');
+            $table->string('bill_water');
             $table->string('bill_electrity');
             $table->tinyInteger('status')->nullable()->index()->comment('1=>active,0=>inactive');
             $table->timestamps();
