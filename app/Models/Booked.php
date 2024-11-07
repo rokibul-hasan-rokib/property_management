@@ -19,7 +19,7 @@ class Booked extends Model
 
     public const STATUS_LIST = [
         self::STATUS_ACCEPT => 'Accept',
-        self::STATUS_ACCEPT => 'Pending',
+        self::STATUS_PENDING => 'Pending',
         self::STATUS_REJECTED => 'Rejected',
     ];
 

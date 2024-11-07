@@ -5,6 +5,9 @@
 
 @section('content')
 
+@php
+    use App\Models\Property;
+@endphp
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -105,6 +108,12 @@
                                     <input type="number" name="kitchen" class="form-control"
                                         value="{{ old('kitchen', $property->kitchen ?? 1) }}"
                                         placeholder="Number of Kitchens">
+                                </div>
+                                <div class="form-group">
+                                    {{html()->label('Status', 'status')}}
+                                    <x-required/>
+                                    {{html()->select('status', \App\Models\Property::STATUS_LIST)->class('form-select '. ($errors->has('address') ? 'is-invalid' : ''))->placeholder(__('Select status'))}}
+                                    <x-validation-error :error="$errors->first('status')"/>
                                 </div>
 
                                 <div class="form-group mb-2">

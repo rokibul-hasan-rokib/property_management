@@ -48,7 +48,12 @@
                                         <td>{{ $book->phone }}</td>
                                         <td>{{ $book->status }}</td>
                                         <td>
-                                            <x-delete-button :route="route('booked.destroy', $book->id)"/>
+                                            <div class="d-flex">
+                                                <x-delete-button :route="route('booked.destroy', $book->id)"/>
+
+                                                <x-edit-button :route="route('booked.edit', $book->id)"/>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 @endforeach

@@ -96,6 +96,13 @@
                                     value="{{ old('kitchen', $property->kitchen) }}" placeholder="Number of Kitchens">
                             </div>
 
+                            <div class="form-group">
+                                {{html()->label('Status', 'status')}}
+                                <x-required/>
+                                {{html()->select('status', \App\Models\Property::STATUS_LIST)->class('form-select '. ($errors->has('address') ? 'is-invalid' : ''))->placeholder(__('Select status'))}}
+                                <x-validation-error :error="$errors->first('status')"/>
+                            </div>
+
                             <div class="form-group mb-2">
                                 <label for="image">Image:</label>
                                 <input type="file" name="image" class="form-control">
@@ -107,6 +114,40 @@
                                     <small>Current image: {{ $property->image }}</small>
                                 @endif
                             </div>
+                            <div class="form-group mb-2">
+                                <label for="image2">Image2:</label>
+                                <input type="file" name="image2" class="form-control">
+                                @if ($property->image2)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $property->image2) }}"
+                                            alt="{{ $property->place }}" width="150" class="img-thumbnail">
+                                    </div>
+                                    <small>Current image: {{ $property->image2 }}</small>
+                                @endif
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="image3">Image3:</label>
+                                <input type="file" name="image3" class="form-control">
+                                @if ($property->image3)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $property->image3) }}"
+                                            alt="{{ $property->place }}" width="150" class="img-thumbnail">
+                                    </div>
+                                    <small>Current image: {{ $property->image3 }}</small>
+                                @endif
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="image4">Image4:</label>
+                                <input type="file" name="image4" class="form-control">
+                                @if ($property->image4)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $property->image4) }}"
+                                            alt="{{ $property->place }}" width="150" class="img-thumbnail">
+                                    </div>
+                                    <small>Current image: {{ $property->image4 }}</small>
+                                @endif
+                            </div>
+
 
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>

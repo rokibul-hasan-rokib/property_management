@@ -47,7 +47,8 @@ class BillController extends Controller
             'bill_house' => 'required|string|max:255',
             'bill_gas' => 'required|string|max:255',
             'bill_water' => 'required|string|max:255',
-            'bill_electrity' => 'required|string|max:255',
+            'bill_water' => 'required|string|max:255',
+            'bill_serviceCharge' => 'required|string|max:255',
             'status' => 'required|in:0,1',
         ]);
 
@@ -62,6 +63,7 @@ class BillController extends Controller
             'bill_gas' => $bill->bill_gas,
             'bill_water' => $bill->bill_month,
             'bill_house' => $bill->bill_house,
+            'bill_serviceCharge' => $bill->bill_serviceCharge,
             'bill_electrity' => $bill->bill_electrity,
             'status' => $bill->status,
         ];

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('washroom')->default(0);
             $table->integer('belcony')->default(0);
             $table->integer('kitchen')->default(1);
+            $table->tinyInteger('status')->nullable()->index()->comment('1=>booked,0=>availabe')->default(0);
             $table->timestamps();
         });
     }

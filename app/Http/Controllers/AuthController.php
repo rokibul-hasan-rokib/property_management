@@ -74,6 +74,7 @@ class AuthController extends Controller
         // $user->sendOtpNotification();
 
         // return redirect()->route('verification.notice');
+        alert_success(__('Registration Successfully Completed'));
         return redirect()->route('login.page');
     }
 
@@ -91,6 +92,7 @@ class AuthController extends Controller
 
         $userCredential = $request->only('email', 'password');
         if (Auth::attempt($userCredential)) {
+            alert_success(__('Login Successfully Completed'));
             return redirect('/');
         } else {
             return back()->with('error', 'Email and Password is incorrect');
@@ -100,6 +102,7 @@ class AuthController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
+        alert_success(__('Logout Successfully Completed'));
         return redirect('/login');
     }
 }

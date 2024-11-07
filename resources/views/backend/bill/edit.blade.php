@@ -17,15 +17,7 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
 
         <section class="section">
             <div class="row">
@@ -82,6 +74,30 @@
                                     <input type="text" name="bill_house" id="bill_house" class="form-control"
                                         value="{{ $bill->bill_house }}">
                                         <x-validation-error :error="$errors->first('bill_house')" />
+                                </div>
+                                <!-- House Bill Amount -->
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="bill_gas" class="form-label">House Bill Amount</label>
+                                    <input type="text" name="bill_gas" id="bill_gas" class="form-control"
+                                        value="{{ $bill->bill_gas }}">
+                                        <x-validation-error :error="$errors->first('bill_gas')" />
+                                </div>
+                                <!-- House Bill Amount -->
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="bill_water" class="form-label">House Bill Amount</label>
+                                    <input type="text" name="bill_water" id="bill_water" class="form-control"
+                                        value="{{ $bill->bill_water }}">
+                                        <x-validation-error :error="$errors->first('bill_water')" />
+                                </div>
+                                <!-- House Bill Amount -->
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="bill_serviceCharge" class="form-label">House Bill Amount</label>
+                                    <input type="text" name="bill_serviceCharge" id="bill_serviceCharge" class="form-control"
+                                        value="{{ $bill->bill_serviceCharge }}">
+                                        <x-validation-error :error="$errors->first('bill_serviceCharge')" />
                                 </div>
 
                                 <!-- Electricity Bill Amount -->

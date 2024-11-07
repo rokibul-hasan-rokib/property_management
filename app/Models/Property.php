@@ -18,6 +18,16 @@ class Property extends Model
         'place', 'image','image2','image3','image4', 'rent', 'house_details', 'floor', 'apartment', 'bed', 'washroom', 'belcony', 'kitchen'
     ];
 
+    public const STATUS_BOOKED = 1;
+
+    public const STATUS_AVAILABLE = 0;
+
+    public const STATUS_LIST = [
+        self::STATUS_BOOKED => 'Booked',
+        self::STATUS_AVAILABLE => 'Available',
+    ];
+
+
     final public function prepare_data(Request $request)
     {
         // Function to handle image upload
