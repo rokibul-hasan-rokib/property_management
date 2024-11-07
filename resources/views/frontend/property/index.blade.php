@@ -112,8 +112,15 @@
                                         </span>
                                     </div>
 
-                                    <a href="{{ route('propertys.show', $property->id) }}"
-                                        class="btn btn-primary py-2 px-3">See details</a>
+                                    <div class="d-flex">
+                                        <a href="{{ route('propertys.show', $property->id) }}"
+                                            class="btn btn-primary py-2 px-3 m-1">See details</a>
+                                        <form action="{{ route('booked.store') }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-primary py-2 px-3 m-1" type="submit">Book
+                                                Now</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
