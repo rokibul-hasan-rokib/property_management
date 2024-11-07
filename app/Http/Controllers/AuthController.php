@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function loadRegister(){
+    public function loadRegister()
+    {
         return view('auth.register');
     }
 
     public function register(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -31,24 +32,27 @@ class AuthController extends Controller
             'has_pets' => 'nullable|boolean',
             'rental_budget' => 'nullable|numeric|min:0',
             'password' => 'required|string|min:8',
-            'image1' =>'nullable',
-            'image2' => 'nullable'
+            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $imagePath = null;
-        if($request->hasFile('image1')){
-             $file = $request->file('image1');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos');
-             $file->move($destinationPath, $filename);
-             $imagePath = 'photos/' . $filename;
-            }
-        if($request->hasFile('image2')){
-             $file = $request->file('image2');
-             $filename = time() . '_' . $file->getClientOriginalName();
-             $destinationPath = public_path('photos');
-             $file->move($destinationPath, $filename);
-             $imagePath = 'photos/' . $filename; 
-            }
+
+        $image1Path = null;
+        if ($request->hasFile('image1')) {
+            $file = $request->file('image1');
+            $filename = time() . '_1_' . $file->getClientOriginalName();
+            $destinationPath = public_path('photos/users');
+            $file->move($destinationPath, $filename);
+            $image1Path = 'photos/users/' . $filename;
+        }
+
+        $image2Path = null;
+        if ($request->hasFile('image2')) {
+            $file = $request->file('image2');
+            $filename = time() . '_2_' . $file->getClientOriginalName();
+            $destinationPath = public_path('photos/users');
+            $file->move($destinationPath, $filename);
+            $image2Path = 'photos/users/' . $filename;
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -60,41 +64,42 @@ class AuthController extends Controller
             'nid' => $request->nid,
             'emergency_contact' => $request->emergency_contact,
             'preferred_move_in_date' => $request->preferred_move_in_date,
-            'has_pets'=>$request->has_pets,
-            'rental_budget'=>$request->rental_budget,
+            'has_pets' => $request->has_pets,
+            'rental_budget' => $request->rental_budget,
             'password' => Hash::make($request->password),
-            "image2" =>$imagePath,
-            "image1" =>$imagePath,
+            'image1' => $image1Path,
+            'image2' => $image2Path,
         ]);
 
-        $user->sendOtpNotification();
+        // $user->sendOtpNotification();
 
-        return redirect()->route('verification.notice');
-
+        // return redirect()->route('verification.notice');
+        return redirect()->route('login.page');
     }
 
-    public function loadLogin(){
+    public function loadLogin()
+    {
         return view('auth.login');
     }
 
-    public function userLogin(Request $request){
+    public function userLogin(Request $request)
+    {
         $request->validate([
-            'email'=>'required|string|email',
-            'password'=>'required',
+            'email' => 'required|string|email',
+            'password' => 'required',
         ]);
 
-        $userCredential = $request->only('email','password');
-        if(Auth::attempt($userCredential)){
+        $userCredential = $request->only('email', 'password');
+        if (Auth::attempt($userCredential)) {
             return redirect('/');
-        }else{
-            return back()->with('error','Email and Password is incorrect');
+        } else {
+            return back()->with('error', 'Email and Password is incorrect');
         }
     }
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         $request->session()->flush();
         Auth::logout();
         return redirect('/login');
     }
-
-
 }
