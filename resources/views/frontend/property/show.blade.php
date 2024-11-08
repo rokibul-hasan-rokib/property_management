@@ -48,6 +48,9 @@
                                 data-bs-img="{{ asset($property->image4) }}" />
                         </div>
                     </div>
+                    <div class="text-bold justify-content-center">
+                           {{ $property->status }}
+                    </div>
                 </div>
 
 
