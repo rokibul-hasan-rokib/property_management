@@ -32,6 +32,7 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 
 Route::get('property', [PropertyController::class, 'index_front'])->name('property.front');
+Route::get('propertys/{property}', [PropertyController::class, 'show'])->name('propertys.show');
 Route::get('service', [ServiceController::class, 'index_front'])->name('service.front');
 Route::get('about', [AboutController::class, 'index_front'])->name('about.front');
 Route::get('/', [HomeController::class, 'index'])->name('home');
