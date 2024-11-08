@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="Rokib" content="Untree.co" />
     <link rel="shortcut icon" href="favicon.png" />
-
+    {!! app('captcha')->renderJs() !!}
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap5" />
     <title>

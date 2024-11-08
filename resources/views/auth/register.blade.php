@@ -169,6 +169,11 @@
                 </div>
 
 
+                <div class="mb-3">
+                    <x-required />
+                    {!! app('captcha')->display() !!}
+                    <x-validation-error :error="$errors->first('g-recaptcha-response')" />
+                </div>
 
                 <!-- Submit Button -->
                 <div class="d-grid gap-2">
