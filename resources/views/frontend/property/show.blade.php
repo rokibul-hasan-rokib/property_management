@@ -48,9 +48,6 @@
                                 data-bs-img="{{ asset($property->image4) }}" />
                         </div>
                     </div>
-                    <div class="text-bold justify-content-center">
-                           {{ $property->status }}
-                    </div>
                 </div>
 
 
@@ -99,6 +96,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-bold justify-content-center">
+        Status of this HOUSE: <strong>{{ $property->status }}</strong>
     </div>
     <div>
         <iframe style="border:0; width: 100%; height: 350px;"
