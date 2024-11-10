@@ -154,7 +154,6 @@
 
                 <!-- NID Front -->
                 <div class="mb-3">
-                    <x-required />
                     <label for="image1" class="form-label">NID Front</label>
                     <input type="file" name="image1" id="image1" class="form-control" accept="image/*">
                     <x-validation-error :error="$errors->first('image1')" />
@@ -162,7 +161,6 @@
 
                 <!-- NID Back -->
                 <div class="mb-3">
-                    <x-required />
                     <label for="image2" class="form-label">NID Back</label>
                     <input type="file" name="image2" id="image2" class="form-control" accept="image/*">
                     <x-validation-error :error="$errors->first('image2')" />
