@@ -21,5 +21,6 @@
     @include('frontend.layouts.footer')
 
     @include('frontend.layouts.js')
+    {!! NoCaptcha::renderJs() !!}
 </body>
 </html>

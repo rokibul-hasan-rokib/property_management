@@ -38,6 +38,8 @@ class AuthController extends Controller
             'g-recaptcha-response' => 'required|captcha',
         ]);
 
+        
+
         $image1Path = null;
         if ($request->hasFile('image1')) {
             $file = $request->file('image1');

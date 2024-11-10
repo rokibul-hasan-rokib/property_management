@@ -171,7 +171,7 @@
 
                 <div class="mb-3">
                     <x-required />
-                    {!! app('captcha')->display() !!}
+                    {!! NoCaptcha::display() !!}
                     <x-validation-error :error="$errors->first('g-recaptcha-response')" />
                 </div>
 
@@ -185,6 +185,7 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- /.untree_co-section -->
 @endsection
