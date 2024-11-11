@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="text-bold justify-content-center m-3">
+    <div class="text-bold justify-content-center m-3 fw-bold text-info">
         Status of this HOUSE: <strong> <td>{{ \App\Models\Property::STATUS_LIST[$property->status] ?? '' }}</td></strong>
     </div>
     <div>
