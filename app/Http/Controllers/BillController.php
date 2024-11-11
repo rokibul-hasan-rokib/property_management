@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Mail\BillNotificationMail;
+use App\Mail\UpdateBillNotificationMail;
 use Illuminate\Support\Facades\Mail;
 
 class BillController extends Controller
@@ -68,7 +69,7 @@ class BillController extends Controller
             'status' => $bill->status,
         ];
         alert_success(__('Bill Created Successfully'));
-        // Mail::to($user->email)->send(new BillNotificationMail($billDetails));
+        Mail::to($user->email)->send(new BillNotificationMail($billDetails));
         return redirect()->route('bills.index')->with('success', 'Bill created successfully.');
     }
 
@@ -102,10 +103,11 @@ class BillController extends Controller
             'bill_electrity' => 'required|string|max:255',
             'status' => 'required|in:0,1',
         ]);
-
+        $user = User::find($request->user_id);
         $bill = MonthlyRent::findOrFail($id);
         $bill_month = $request->input('bill_month') . '-01';
         $bill->update(array_merge($request->all(), ['bill_month' => $bill_month]));
+        Mail::to($user->email)->send(new UpdateBillNotificationMail($bill));
         alert_success(__('Bills Updated Successfully'));
         return redirect()->route('bills.index')->with('success', 'Bill updated successfully.');
     }
