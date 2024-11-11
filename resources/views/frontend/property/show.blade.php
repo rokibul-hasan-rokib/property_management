@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="text-bold justify-content-center m-3 fw-bold text-info">
-        Status of this HOUSE: <strong> <td>{{ \App\Models\Property::STATUS_LIST[$property->status] ?? '' }}</td></strong>
+        Status of this HOUSE: <strong class="text-success text-uppercase"> <td>{{ \App\Models\Property::STATUS_LIST[$property->status] ?? '' }}</td></strong>
     </div>
     <div>
         <iframe style="border:0; width: 100%; height: 350px;"
