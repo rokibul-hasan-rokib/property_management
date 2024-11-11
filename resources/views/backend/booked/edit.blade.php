@@ -36,14 +36,22 @@
                             <h5 class="card-title">Booked Status Update Form</h5>
 
                             <!-- General Form Elements -->
-                            <form action="{{ route('booked.store') }}" method="POST">
+                            <form action="{{ route('booked.update',$booked->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    {{html()->label('Status', 'status')}}
-                                    <x-required/>
-                                    {{html()->select('status', \App\Models\Booked::STATUS_LIST)->class('form-select '. ($errors->has('address') ? 'is-invalid' : ''))->placeholder(__('Select status'))}}
-                                    <x-validation-error :error="$errors->first('status')"/>
+                                <div class="mb-3">
+                                    <x-required />
+                                    <label for="status">Status</label>
+                                    <select name="status" id="status" class="form-select" required>
+                                        <option value="{{$booked->status}}" disabled>Select status</option>
+                                        @foreach (\App\Models\Booked::STATUS_LIST as $key => $value)
+                                            <option value="{{ $key }}"
+                                                {{ $booked->status == $key ? 'selected' : '' }}>
+                                                {{ $value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <x-validation-error :error="$errors->first('status')" />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

@@ -57,19 +57,20 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Booked $book)
+    public function edit(Booked $booked)
     {
-        return view('backend.booked.edit', compact('book'));
+        return view('backend.booked.edit', compact('booked'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booked $book)
+    public function update(Request $request, Booked $booked)
     {
+        //dd($request->all());
         try {
             DB::beginTransaction();
-            (new Booked)->updateBooked($request, $book);
+            (new Booked)->updateBooked($request, $booked);
             DB::commit();
             return redirect()->route('booked.index');
         } catch (\Throwable $th) {
@@ -81,11 +82,11 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booked $book)
+    public function destroy(Booked $booked)
     {
         try {
             DB::beginTransaction();
-            (new Booked)->deleteBooked($book);
+            (new Booked)->deleteBooked($booked);
             DB::commit();
             return redirect()->route('booked.index');
         } catch (\Throwable $th) {

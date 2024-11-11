@@ -53,7 +53,7 @@
                                             <td>{{ $bill->bill_house }}</td>
                                             <td>{{ $bill->bill_electrity }}</td>
                                             <td>
-                                                {{ $bill->status }}
+                                                {{ \App\Models\MonthlyRent::STATUS_LIST[$bill->status] ?? '' }}
                                             </td>
                                             <td>
                                                 <a href="{{ route('bills.edit', $bill->id) }}"

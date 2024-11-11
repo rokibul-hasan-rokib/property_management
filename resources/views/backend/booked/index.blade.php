@@ -46,7 +46,7 @@
                                         <td>{{ $book->user_name }}</td>
                                         <td>{{ $book->email }}</td>
                                         <td>{{ $book->phone }}</td>
-                                        <td>{{ $book->status }}</td>
+                                        <td> {{ \App\Models\Booked::STATUS_LIST[$book->status] ?? '' }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <x-delete-button :route="route('booked.destroy', $book->id)"/>

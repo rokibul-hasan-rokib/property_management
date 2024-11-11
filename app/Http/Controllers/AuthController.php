@@ -38,7 +38,7 @@ class AuthController extends Controller
             'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        
+
 
         $image1Path = null;
         if ($request->hasFile('image1')) {
@@ -75,11 +75,11 @@ class AuthController extends Controller
             'image2' => $image2Path,
         ]);
 
-        // $user->sendOtpNotification();
+        $user->sendOtpNotification();
 
-        // return redirect()->route('verification.notice');
-        alert_success(__('Registration Successfully Completed'));
-        return redirect()->route('login.page');
+        return redirect()->route('verification.notice');
+        // alert_success(__('Registration Successfully Completed'));
+        // return redirect()->route('login.page');
     }
 
     public function loadLogin()

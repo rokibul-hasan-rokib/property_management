@@ -78,7 +78,7 @@
                                 <!-- House Bill Amount -->
                                 <div class="mb-3">
                                     <x-required />
-                                    <label for="bill_gas" class="form-label">House Bill Amount</label>
+                                    <label for="bill_gas" class="form-label">Gas Bill</label>
                                     <input type="text" name="bill_gas" id="bill_gas" class="form-control"
                                         value="{{ $bill->bill_gas }}">
                                         <x-validation-error :error="$errors->first('bill_gas')" />
@@ -86,7 +86,7 @@
                                 <!-- House Bill Amount -->
                                 <div class="mb-3">
                                     <x-required />
-                                    <label for="bill_water" class="form-label">House Bill Amount</label>
+                                    <label for="bill_water" class="form-label">Water Bill</label>
                                     <input type="text" name="bill_water" id="bill_water" class="form-control"
                                         value="{{ $bill->bill_water }}">
                                         <x-validation-error :error="$errors->first('bill_water')" />
@@ -94,7 +94,7 @@
                                 <!-- House Bill Amount -->
                                 <div class="mb-3">
                                     <x-required />
-                                    <label for="bill_serviceCharge" class="form-label">House Bill Amount</label>
+                                    <label for="bill_serviceCharge" class="form-label">Service Charge:</label>
                                     <input type="text" name="bill_serviceCharge" id="bill_serviceCharge" class="form-control"
                                         value="{{ $bill->bill_serviceCharge }}">
                                         <x-validation-error :error="$errors->first('bill_serviceCharge')" />
@@ -114,7 +114,7 @@
                                     <x-required />
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-select" required>
-                                        <option value="" disabled>Select status</option>
+                                        <option value="{{$bill->status}}" disabled>Select status</option>
                                         @foreach (\App\Models\MonthlyRent::STATUS_LIST as $key => $value)
                                             <option value="{{ $key }}"
                                                 {{ $bill->status == $key ? 'selected' : '' }}>

@@ -26,12 +26,12 @@ class MonthlyRent extends Model
         'status',
     ];
 
-    public const STATUS_INACTIVE = 0;
-    public const STATUS_ACTIVE = 1;
+    public const STATUS_NOTPAID = 0;
+    public const STATUS_PAID = 1;
 
     public const STATUS_LIST = [
-        self::STATUS_ACTIVE => 'Active',
-        self::STATUS_INACTIVE => 'Inactive',
+        self::STATUS_PAID => 'Paid',
+        self::STATUS_NOTPAID => 'Pending',
     ];
 
     final public function storeBill(Request $request): Builder|Model
