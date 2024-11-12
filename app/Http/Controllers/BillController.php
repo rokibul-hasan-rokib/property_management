@@ -76,9 +76,10 @@ class BillController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(MonthlyRent $bill)
     {
-        //
+        dd($$bill);
+        return view('backend.bill.show',compact('bill'));
     }
 
     /**
