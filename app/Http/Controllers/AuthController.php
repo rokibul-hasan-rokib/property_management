@@ -90,16 +90,16 @@ class AuthController extends Controller
     public function userLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'phone_number' => 'required',
             'password' => 'required',
         ]);
 
-        $userCredential = $request->only('email', 'password');
+        $userCredential = $request->only('phone_number', 'password');
         if (Auth::attempt($userCredential)) {
             alert_success(__('Login Successfully Completed'));
             return redirect('/');
         } else {
-            return back()->with('error', 'Email and Password is incorrect');
+            return back()->with('error', 'Number and Password is incorrect');
         }
     }
     public function logout(Request $request)

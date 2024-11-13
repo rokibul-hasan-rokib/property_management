@@ -35,9 +35,9 @@
                         @csrf
                         <div class="form-group">
                             <x-required />
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
-                            <x-validation-error :error="$errors->first('email')" />
+                            <label for="phone_number">Number</label>
+                            <input type="number" name="phone_number" id="phone_number" class="form-control" required>
+                            <x-validation-error :error="$errors->first('phone_number')" />
                         </div>
                         <div class="form-group mb-2">
                             <x-required />

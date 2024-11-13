@@ -18,7 +18,7 @@ class Booked extends Model
     public const STATUS_REJECTED = 2;
 
     public const STATUS_LIST = [
-        self::STATUS_PAID => 'Paid',
+        self::STATUS_PAID => 'Accept',
         self::STATUS_PENDING => 'Pending',
         self::STATUS_REJECTED => 'Rejected',
     ];

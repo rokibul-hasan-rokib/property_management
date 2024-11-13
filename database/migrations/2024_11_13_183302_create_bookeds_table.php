@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('email');
             $table->string('phone');
+            $table->tinyInteger('status')->nullable()->default(0)->index()->comment('1=>accept,2=>pending,3=>rejected');
             $table->timestamps();
         });
     }
