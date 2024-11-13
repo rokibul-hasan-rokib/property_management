@@ -36,7 +36,7 @@
             <li><strong>Bill Name:</strong> {{ $billDetails['bill_name'] }}</li>
             <li><strong>House:</strong> {{ $billDetails['bill_house'] }}</li>
             <li><strong>Electricity Bill:</strong> {{ $billDetails['bill_electrity'] }}</li>
-            <li><strong>Status:</strong> {{ $billDetails['status'] == 1 ? 'Active' : 'Inactive' }}</li>
+            <li><strong>Status:</strong> {{ $billDetails['status'] == 1 ? 'Paid' : 'Pending' }}</li>
         </ul>
     </div>
 
