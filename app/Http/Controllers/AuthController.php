@@ -97,7 +97,7 @@ class AuthController extends Controller
         $userCredential = $request->only('phone_number', 'password');
         if (Auth::attempt($userCredential)) {
             alert_success(__('Login Successfully Completed'));
-            return redirect('/');
+            return redirect('/dashboard');
         } else {
             return back()->with('error', 'Number and Password is incorrect');
         }
