@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <x-required />
-                                    <label for="bill_serviceCharge" class="form-label">Water Bill Amount</label>
+                                    <label for="bill_serviceCharge" class="form-label">Service charge Bill Amount</label>
                                     <input type="text" name="bill_serviceCharge" id="bill_serviceCharge" class="form-control">
                                     <x-validation-error :error="$errors->first('bill_serviceCharge')" />
                                 </div>
