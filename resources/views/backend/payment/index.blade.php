@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Payment</h5>
-
+                            <a class="btn btn-small btn-primary" href="{{ route('payment.month') }}">Monthly Details</a>
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
@@ -48,7 +48,7 @@
                                             <td>{{ $payment->name }}</td>
                                             <td>{{ $payment->number }}</td>
                                             <td>{{ $payment->amount }}</td>
-                                            <td>{{ $payment->month }}</td>
+                                            <td>{{ \App\Models\Payment::MONTH_LIST[$payment->month] ?? '' }}</td>
                                             <td>{{ $payment->flat }}</td>
                                             <td>{{ $payment->apartment }}</td>
                                             <td>{{ $payment->descriptions }}</td>

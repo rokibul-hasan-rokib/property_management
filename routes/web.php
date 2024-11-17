@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'role:admin,user']], function () {
 Route::resource('agents', AgentController::class);
 Route::resource('owners', OwnerController::class);
 Route::resource('customers', CustomerController::class);
+Route::get('/monthly-payment', [PaymentController::class, 'month_details'])->name('payment.month');
 Route::resource('payments', PaymentController::class);
 Route::resource('complains', ComplainController::class);
 Route::get('/bill/users',[BillController::class,'billingHistory'])->name('billinghistory');

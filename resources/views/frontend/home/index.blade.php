@@ -1,6 +1,5 @@
 @extends('frontend.layouts.app')
 
-
 @section('title')
    home
 @endsection

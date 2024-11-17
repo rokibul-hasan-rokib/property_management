@@ -28,6 +28,8 @@ class Property extends Model
     ];
 
 
+
+
     final public function prepare_data(Request $request)
     {
         // Function to handle image upload

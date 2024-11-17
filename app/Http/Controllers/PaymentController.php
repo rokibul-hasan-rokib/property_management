@@ -19,6 +19,17 @@ class PaymentController extends Controller
         return view('backend.payment.index',compact('payments'));
     }
 
+    public function month_details(){
+    $payments = Payment::all();
+
+    $monthlyTotals = Payment::select('month', DB::raw('SUM(amount) as total_amount'))
+        ->groupBy('month')
+        ->orderByRaw("FIELD(month, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')")
+        ->get();
+
+    return view('backend.payment.month-payment', compact('payments', 'monthlyTotals'));
+    }
+
     public function index2(){
         return view('frontend.payment.index');
     }
