@@ -38,7 +38,7 @@
                             <p>
                                 43 Raymouth Rd. Baltemoer,<br />
                                 London 3910
-                            </p>   
+                            </p>
                         </div>
 
                         <div class="open-hours mt-4">
@@ -91,7 +91,13 @@
                             <!-- Month Field -->
                             <div class="col-6 mb-3">
                                 <x-required />
-                                <input type="text" name="month" id="month" class="form-control" placeholder="Month"  />
+                                <label for="month">Month</label>
+                                <select name="month" id="month" class="form-select" required>
+                                    <option value="month" disabled selected>Select Month</option>
+                                    @foreach (\App\Models\MonthlyRent::MONTH_LIST as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                                 <x-validation-error :error="$errors->first('month')" />
                             </div>
 

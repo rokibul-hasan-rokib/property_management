@@ -34,6 +34,36 @@ class MonthlyRent extends Model
         self::STATUS_NOTPAID => 'Pending',
     ];
 
+    Public const JANUARY = 1;
+    Public const FEBRUARY = 2;
+    Public const MARCH = 3;
+    Public const APRIL = 4;
+    Public const MAY = 5;
+    Public const JUNE = 6;
+    Public const JULY = 7;
+    Public const AUGUST = 8;
+    Public const SEPTEMBER = 9;
+    Public const OCTOBER = 10;
+    Public const NOVEMBER = 11;
+    Public const DECEMBER = 12;
+
+    public const MONTH_LIST =
+    [
+        self::JANUARY => "January",
+        self::FEBRUARY => "February",
+        self::MARCH => "March",
+        self::APRIL => "April",
+        self::MAY => "May",
+        self::JUNE => "June",
+        self::JULY => "July",
+        self::AUGUST => "August",
+        self::SEPTEMBER => "September",
+        self::OCTOBER => "October",
+        self::NOVEMBER => "November",
+        self::DECEMBER => "December",
+
+    ];
+
     final public function storeBill(Request $request): Builder|Model
     {
         return self::query()->create($this->prepare_data($request));
