@@ -62,6 +62,11 @@
                                     <label for="house_details">House Details:</label>
                                     <textarea name="house_details" class="form-control" placeholder="Enter House Details" required>{{ old('house_details', $property->house_details ?? '') }}</textarea>
                                 </div>
+                                <div class="form-group">
+                                    <x-required />
+                                    <label for="location">Embed Map HTML Code:</label>
+                                    <textarea name="location" class="form-control" placeholder="Enter House Details" required>{{ old('location', $property->location ?? '') }}</textarea>
+                                </div>
 
                                 <div class="form-group">
                                     <x-required />
