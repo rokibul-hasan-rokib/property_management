@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image4')->nullable();
             $table->decimal('rent', 8,2);
             $table->string('house_details');
+            $table->string('location');
             $table->integer('floor');
             $table->string('apartment');
             $table->integer('bed')->default(0);
