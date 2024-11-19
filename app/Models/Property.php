@@ -58,6 +58,7 @@ class Property extends Model
             "image4" => $imagePath4,
             "rent" => $request->input('rent'),
             "house_details" => $request->input('house_details'),
+            "location" => $request->input('location'),
             "floor" => $request->input('floor'),
             'apartment' => $request->input('apartment'),
             "bed" => $request->input('bed'),
