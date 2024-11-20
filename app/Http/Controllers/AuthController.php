@@ -90,7 +90,7 @@ class AuthController extends Controller
     public function userLogin(Request $request)
     {
         $request->validate([
-            'phone_number' => 'required',
+            'phone_number' => 'required|digits:11',
             'password' => 'required',
         ]);
 

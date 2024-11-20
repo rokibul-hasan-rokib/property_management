@@ -23,7 +23,7 @@ class PaymentRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'number' => 'required|numeric',
+            'number' => 'required|digits:11',
             'amount' => 'required|numeric|min:0',
             'month' => 'required|string|max:255',
             'flat' => 'required|string|max:255',
