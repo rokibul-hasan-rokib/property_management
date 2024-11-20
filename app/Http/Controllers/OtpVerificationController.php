@@ -22,19 +22,16 @@ class OtpVerificationController extends Controller
     {
         $request->validate([
             'otp' => 'required|digits:6',
-            'email' => 'required|email|exists:users,email',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+       // $user = User::where('email', $request->email)->first();
 
-        $otp = Otp::where('user_id', $user->id)
-                    ->where('otp', $request->otp)
+        $otp = Otp::where('otp', $request->otp)
                     ->where('is_used', false)
                     ->first();
 
         if ($otp) {
             $otp->update(['is_used' => true]);
-            $user->markEmailAsVerified();
             alert_success(__('Email verified successfully.'));
             return redirect()->route('login')->with('success', 'Email verified successfully.');
         }

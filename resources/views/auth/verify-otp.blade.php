@@ -48,7 +48,6 @@
         <h1>Verify OTP</h1>
         <form action="{{ route('verify.otp') }}" method="POST">
             @csrf
-            <input type="email" name="email" placeholder="Email" class="form-control" required>
             <input type="text" name="otp" placeholder="OTP" class="form-control" required>
             <button type="submit" class="btn btn-custom">Verify OTP</button>
         </form>
