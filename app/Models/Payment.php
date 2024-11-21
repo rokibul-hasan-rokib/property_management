@@ -76,6 +76,10 @@ class Payment extends Model
         return $payment->update($this->prepare_data(($request)));
     }
 
+    public static function rokib(){
+         echo "Rokib";
+    }
+
     public function deletePayment(Payment $payment)
     {
         return $payment->forceDelete();

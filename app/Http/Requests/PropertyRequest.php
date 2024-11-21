@@ -29,6 +29,7 @@ class PropertyRequest extends FormRequest
             'image4'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rent'           => 'required|numeric',
             'house_details'  => 'required|string',
+            'location'        => 'required|string',
             'bed'            => 'required|integer',
             'washroom'       => 'required|integer',
             'belcony'        => 'required|integer',

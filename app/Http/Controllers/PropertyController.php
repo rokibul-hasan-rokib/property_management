@@ -40,7 +40,7 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
-       // dd($request->all());
+    //    dd($request->all());
         try {
             DB::beginTransaction();
             $property = (new Property())->storeProperty($request);

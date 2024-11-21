@@ -21,15 +21,7 @@
             </nav>
         </div><!-- End Page Title -->
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
 
         <section class="section">
             <div class="row">
@@ -44,7 +36,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <x-required />
-                                    <label for="place">Place:</label>
+                                    <label for="place">House Details:</label>
                                     <input type="text" name="place" class="form-control"
                                         value="{{ old('place', $property->place ?? '') }}" placeholder="Enter Place"
                                         required>
@@ -59,14 +51,15 @@
 
                                 <div class="form-group">
                                     <x-required />
-                                    <label for="house_details">House Details:</label>
+                                    <label for="house_details">Location Map Embed:</label>
                                     <textarea name="house_details" class="form-control" placeholder="Enter House Details" required>{{ old('house_details', $property->house_details ?? '') }}</textarea>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <x-required />
                                     <label for="location">Embed Map HTML Code:</label>
-                                    <textarea name="location" class="form-control" placeholder="Enter House Details" required>{{ old('location', $property->location ?? '') }}</textarea>
-                                </div>
+                                    <textarea name="location" class="form-control" placeholder="Enter Location Details" required>{{ old('location', $property->location ?? '') }}</textarea>
+                                    <x-validation-error :error="$errors->first('location')" />
+                                </div> --}}
 
                                 <div class="form-group">
                                     <x-required />

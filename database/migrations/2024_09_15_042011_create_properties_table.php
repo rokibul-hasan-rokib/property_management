@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('image3')->nullable();
             $table->string('image4')->nullable();
             $table->decimal('rent', 8,2);
-            $table->string('house_details');
-            $table->string('location');
-            $table->integer('floor');
-            $table->string('apartment');
+            $table->text('house_details')->nullable();
+            $table->text('location')->nullable();
+            $table->integer('floor')->nullable();
+            $table->string('apartment')->nullable();
             $table->integer('bed')->default(0);
             $table->integer('washroom')->default(0);
             $table->integer('belcony')->default(0);

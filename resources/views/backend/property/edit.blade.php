@@ -58,6 +58,10 @@
                                 <label for="house_details">House Details:</label>
                                 <textarea name="house_details" class="form-control" placeholder="Enter House Details">{{ old('house_details', $property->house_details) }}</textarea>
                             </div>
+                            {{-- <div class="form-group">
+                                <label for="location">Location:</label>
+                                <textarea name="location" class="form-control" placeholder="Enter Location">{{ old('location', $property->location) }}</textarea>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label for="floor">Floor:</label>

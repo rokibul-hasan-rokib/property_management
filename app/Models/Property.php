@@ -84,8 +84,4 @@ class Property extends Model
         return $property->forceDelete();
     }
 
-
-
-
-
 }

@@ -50,6 +50,7 @@ class PaymentController extends Controller
             try {
                 DB::beginTransaction();
                 $payment = (new Payment())->storePayment($request);
+
                 DB::commit();
                 return redirect()->route('example2')->with('success',"Payment successfull");
             } catch (\Throwable $th) {

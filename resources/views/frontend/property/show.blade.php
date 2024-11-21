@@ -52,8 +52,7 @@
 
 
                 <div class="col-lg-4">
-                    <h2 class="heading text-primary">{{ $property->house_details }}</h2>
-                    <p class="meta">{{ $property->place }}</p>
+                    <h2 class="heading text-primary">{{ $property->place }}</h2>
                     <p class="text-black-50">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione
                         laborum quo quos omnis sed magnam id, ducimus saepe, debitis error
@@ -101,7 +100,7 @@
         Status of this HOUSE: <strong class="text-success text-uppercase"> <td>{{ \App\Models\Property::STATUS_LIST[$property->status] ?? '' }}</td></strong>
     </div>
     <div>
-        {{ $property->location }}
+        {!! $property->house_details !!}
     </div>
     <!-- Modal to show the larger image as a carousel -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">

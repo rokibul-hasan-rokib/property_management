@@ -33,9 +33,8 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Place</th>
-                                        <th>Rent</th>
                                         <th>House Details</th>
+                                        <th>Rent</th>
                                         <th>Floor</th>
                                         <th>Apartment</th>
                                         <th>Bed</th>
@@ -52,7 +51,6 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $property->place }}</td>
                                             <td>{{ $property->rent }}</td>
-                                            <td>{{ $property->house_details }}</td>
                                             <td>{{ $property->floor }}</td>
                                             <td>{{ $property->apartment }}</td>
                                             <td>{{ $property->bed }}</td>
