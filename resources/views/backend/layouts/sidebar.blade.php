@@ -44,7 +44,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('customers.index')}}">
           <i class="bi bi-dash-circle"></i>
-          <span>Customer</span>
+          <span>Customer Review Add</span>
         </a>
       </li><!-- End Error 404 Page Nav -->
 
