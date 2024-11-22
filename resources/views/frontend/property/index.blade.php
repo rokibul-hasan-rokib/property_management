@@ -97,7 +97,6 @@
                             <div class="property-content">
                                 <div class="price mb-2"><span>${{ $property->rent }}</span></div>
                                 <div>
-                                    <span class="d-block mb-2 text-black-50">{{ $property->house_details }}</span>
                                     <span class="city d-block mb-3">{{ $property->place }}</span>
 
                                     <div class="specs d-flex mb-4">
