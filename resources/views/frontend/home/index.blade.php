@@ -21,7 +21,7 @@
                     <form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
                         data-aos-delay="200">
                         <input type="text" class="form-control px-4"
-                            placeholder="Your ZIP code or City. e.g. New York" />
+                            placeholder="Welcome to our Apartment Management" />
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                 </div>
