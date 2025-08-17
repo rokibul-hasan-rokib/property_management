@@ -19,7 +19,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -37,9 +36,6 @@ class AuthController extends Controller
             'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'g-recaptcha-response' => 'required|captcha',
         ]);
-
-
-
         $image1Path = null;
         if ($request->hasFile('image1')) {
             $file = $request->file('image1');
@@ -57,7 +53,6 @@ class AuthController extends Controller
             $file->move($destinationPath, $filename);
             $image2Path = 'photos/users/' . $filename;
         }
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -74,12 +69,8 @@ class AuthController extends Controller
             'image1' => $image1Path,
             'image2' => $image2Path,
         ]);
-
         $user->sendOtpNotification();
-
         return redirect()->route('verification.notice');
-        // alert_success(__('Registration Successfully Completed'));
-        // return redirect()->route('login.page');
     }
 
     public function loadLogin()
