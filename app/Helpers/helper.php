@@ -11,7 +11,6 @@ function alert_success(string $message): void
     session()->flash('message', $message);
     session()->flash('class', 'success');
 }
-
 /**
  * @param string $message
  * @return void
@@ -21,7 +20,6 @@ function alert_error(string $message): void
     session()->flash('message', $message);
     session()->flash('class', 'danger');
 }
-
 /**
  * @param string $name
  * @param Throwable $throwable
